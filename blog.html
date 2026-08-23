@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>블로그 | 소통마케팅센터</title>
+<meta name="description" content="제천·충주·원주 소상공인을 위한 온라인 마케팅 정보. 네이버 검색 노출, 블로그 운영, 홈페이지와 자동화까지 실제로 쓰는 방법을 정리합니다.">
+<link rel="canonical" href="https://sotongmk.com/blog.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="블로그 | 소통마케팅센터">
+<meta property="og:description" content="제천 소상공인을 위한 온라인 마케팅 정보를 정리합니다.">
+<meta property="og:image" content="/assets/img/logo-sotong.png">
+<meta property="og:locale" content="ko_KR">
+<meta name="theme-color" content="#0B0B0D">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<script>document.documentElement.className+=" js"</script>
+<link rel="stylesheet" href="/assets/css/site.css">
+</head>
+<body>
+
+<div class="progress" data-progress aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="hdr__logo" href="/" aria-label="소통마케팅센터 홈">
+      <img src="/assets/img/logo-wordmark.png" alt="소통마케팅센터" width="760" height="301">
+    </a>
+    <span class="hdr__clock" data-clock aria-hidden="true">— --:--</span>
+    <nav class="hdr__nav" aria-label="주요 메뉴">
+      <a href="/#tracks">서비스</a>
+      <a href="/#services">전체 업무</a>
+      <a href="/#geulhaejum">글해줌</a>
+      <a href="/blog.html">블로그</a>
+      <a href="/#faq">자주 묻는 질문</a>
+    </nav>
+    <a class="btn btn--brand hdr__cta" href="/#contact" data-magnetic>무료 진단 받기</a>
+  </div>
+</header>
+
+<main>
+  <section class="sheet sheet--ink blogpage">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow">블로그</p>
+        <h2>검색해서 찾을 수 있는<br>이야기를 씁니다.</h2>
+        <p class="lede muted">
+          제천·충주·원주 사장님들이 실제로 묻는 것들을 정리합니다.
+          이 블로그는 저희가 만든 <a class="ilink" href="/#geulhaejum">글해줌</a>으로 발행합니다 —
+          고객사에 파는 것을 저희가 먼저 씁니다.
+        </p>
+      </div>
+
+      <div class="blog-list" data-blog-list>
+        <p class="blog-empty">글을 불러오는 중입니다…</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr__in">
+    <div>
+      <p><b>소통마케팅센터</b> — 소셜로 통하는 소상공인의 통로</p>
+      <address>
+        충북 제천시 하소로 20<br>
+        전화 <a href="tel:0507-1309-5662">0507-1309-5662</a>
+      </address>
+    </div>
+    <div>
+      <p><b>채널</b></p>
+      <address>
+        <a href="https://blog.naver.com/stsnsm5662" target="_blank" rel="noopener">네이버 블로그</a><br>
+        <a href="https://www.instagram.com/stsnsm5662" target="_blank" rel="noopener">인스타그램</a>
+      </address>
+    </div>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="빠른 연락">
+  <a href="tel:0507-1309-5662">전화</a>
+  <a href="https://open.kakao.com/o/svU2DWnh" target="_blank" rel="noopener">카톡 상담</a>
+  <a class="is-primary" href="https://naver.me/FdC4kHcY" target="_blank" rel="noopener">무료 진단</a>
+</nav>
+
+<script src="/assets/js/site.js" defer></script>
+<script>
+/* posts.json 하나만 읽어서 목록을 그린다.
+   글해줌이 발행할 때 posts.json 맨 앞에 새 글을 넣고 posts/{id}.html 을 함께 만든다. */
+(function () {
+  'use strict';
+  var box = document.querySelector('[data-blog-list]');
+  if (!box) return;
+
+  var esc = function (s) {
+    return String(s == null ? '' : s)
+      .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;');
+  };
+
+  fetch('/posts.json', { cache: 'no-cache' })
+    .then(function (r) {
+      if (!r.ok) throw new Error('posts.json ' + r.status);
+      return r.json();
+    })
+    .then(function (posts) {
+      if (!Array.isArray(posts) || !posts.length) {
+        box.innerHTML = '<p class="blog-empty">첫 글을 준비하고 있습니다.</p>';
+        return;
+      }
+      box.innerHTML = posts.map(function (p) {
+        var tags = (p.tags || []).slice(0, 4).map(function (t) {
+          return '<span class="blog-tag">#' + esc(t) + '</span>';
+        }).join('');
+        return '' +
+          '<a class="blog-card" href="/posts/' + encodeURIComponent(p.id) + '.html">' +
+            '<span class="blog-card__date">' + esc(p.date || '') + '</span>' +
+            '<h3 class="blog-card__title">' + esc(p.title || '제목 없음') + '</h3>' +
+            (p.summary ? '<p class="blog-card__sum">' + esc(p.summary) + '</p>' : '') +
+            '<span class="blog-card-tags">' + tags + '</span>' +
+            '<span class="blog-card__go">읽어보기 <span aria-hidden="true">→</span></span>' +
+          '</a>';
+      }).join('');
+    })
+    .catch(function () {
+      box.innerHTML = '<p class="blog-empty">글 목록을 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.</p>';
+    });
+})();
+</script>
+
+</body>
+</html>
