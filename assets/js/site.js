@@ -100,19 +100,41 @@
     try { pulseMotion.beginElement(); } catch (e) { /* SMIL 미지원 브라우저는 조용히 무시 */ }
   };
 
+  var pipe = document.querySelector('.pipe__svg');
+  var pipeVisible = false;
+
+  var replayPipe = function () {
+    if (!pipe || reduced) return;
+    pipe.classList.remove('is-in');
+    void pipe.offsetWidth;            // 리플로우 강제 — 애니메이션 재시작 트릭
+    pipe.classList.add('is-in');
+    activatePipe(pipe);
+  };
+
   if (!('IntersectionObserver' in window) || reduced) {
     Array.prototype.forEach.call(targets, function (el) { el.classList.add('is-in'); });
   } else {
     var io = new IntersectionObserver(function (entries) {
       entries.forEach(function (e) {
+        if (e.target === pipe) {
+          /* 파이프라인은 한 번으로 끝내지 않는다 — 들어올 때마다 다시 그린다 */
+          pipeVisible = e.isIntersecting;
+          if (e.isIntersecting) replayPipe();
+          else pipe.classList.remove('is-in');
+          return;
+        }
         if (e.isIntersecting) {
           e.target.classList.add('is-in');
-          if (e.target.classList.contains('pipe__svg')) activatePipe(e.target);
           io.unobserve(e.target);
         }
       });
     }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
     Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+
+    /* 보고 있는 동안에도 7.5초마다 처음부터 다시 — 모션이 계속 산다 */
+    if (pipe) {
+      setInterval(function () { if (pipeVisible) replayPipe(); }, 7500);
+    }
   }
 
   /* SVG 선 길이를 실제 path 길이로 맞춘다 (dash 애니메이션용) */
