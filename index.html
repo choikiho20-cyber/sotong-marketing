@@ -313,13 +313,16 @@
         </div>
       </div>
 
-      <svg class="pipe__svg" viewBox="0 0 420 330" role="img" aria-label="키워드 입력에서 AI 초안 작성과 사람 검수를 거쳐 여러 채널로 동시에 발행되는 흐름도">
+      <svg class="pipe__svg" viewBox="0 0 420 380" role="img" aria-label="키워드 입력에서 AI 초안 작성과 사람 검수를 거쳐 네이버 블로그, 티스토리, 인스타그램, 유튜브, 스레드, 홈페이지 여섯 채널로 동시에 발행되는 흐름도">
         <!-- 세로 흐름 -->
         <path class="ln" d="M46 34 V244"/>
-        <!-- 마지막 단계에서 채널로 갈라지는 분기 -->
-        <path class="ln ln--fan" d="M46 244 C 46 300, 150 300, 210 300 H 360"/>
-        <path class="ln ln--fan" d="M46 244 C 46 282, 150 274, 210 274 H 360"/>
-        <path class="ln ln--fan" d="M46 244 C 46 262, 150 248, 210 248 H 360"/>
+        <!-- 마지막 단계에서 6개 채널로 갈라지는 분기 -->
+        <path class="ln ln--fan" d="M46 244 C 130 244, 170 192, 210 192 H 246"/>
+        <path class="ln ln--fan" d="M46 244 C 130 244, 170 226, 210 226 H 246"/>
+        <path class="ln ln--fan" d="M46 244 C 130 244, 170 260, 210 260 H 246"/>
+        <path class="ln ln--fan" d="M46 244 C 130 244, 170 294, 210 294 H 246"/>
+        <path class="ln ln--fan" d="M46 244 C 130 244, 170 328, 210 328 H 246"/>
+        <path class="ln ln--fan" d="M46 244 C 130 244, 170 362, 210 362 H 246"/>
         <circle class="pulse-ring" cx="46" cy="34" r="6.5"/>
         <circle class="pulse-ring" cx="46" cy="104" r="6.5"/>
         <circle class="pulse-ring" cx="46" cy="174" r="6.5"/>
@@ -343,11 +346,13 @@
           <circle cx="46" cy="244" r="6.5" fill="#FF1B5A"/>
           <text x="66" y="235" fill="#FFFFFF" font-size="15" font-weight="700" font-family="Pretendard Variable, sans-serif">채널별 자동 발행</text>
         </g>
-        <g class="nd nd--fan">
-          <circle cx="368" cy="248" r="4.5" fill="#FFFFFF"/>
-          <circle cx="368" cy="274" r="4.5" fill="#FFFFFF"/>
-          <circle cx="368" cy="300" r="4.5" fill="#FFFFFF"/>
-          <text x="384" y="279" fill="#9A9AA6" font-size="13" font-weight="700" font-family="JetBrains Mono, monospace">···</text>
+        <g class="nd nd--fan" font-size="13" font-weight="700" font-family="Pretendard Variable, sans-serif">
+          <circle cx="250" cy="192" r="4.5" fill="#FFFFFF"/><text x="266" y="197" fill="#FFFFFF">네이버 블로그</text>
+          <circle cx="250" cy="226" r="4.5" fill="#FFFFFF"/><text x="266" y="231" fill="#FFFFFF">티스토리</text>
+          <circle cx="250" cy="260" r="4.5" fill="#FFFFFF"/><text x="266" y="265" fill="#FFFFFF">인스타그램</text>
+          <circle cx="250" cy="294" r="4.5" fill="#FFFFFF"/><text x="266" y="299" fill="#FFFFFF">유튜브</text>
+          <circle cx="250" cy="328" r="4.5" fill="#FFFFFF"/><text x="266" y="333" fill="#FFFFFF">스레드</text>
+          <circle cx="250" cy="362" r="4.5" fill="#FFFFFF"/><text x="266" y="367" fill="#FFFFFF">홈페이지</text>
         </g>
       </svg>
     </div>
