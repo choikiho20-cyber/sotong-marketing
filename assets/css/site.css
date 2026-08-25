@@ -551,6 +551,12 @@ h3{font-size:clamp(19px,2.2vw,23px);letter-spacing:-.03em;line-height:1.3}
 .faq__item[open] .faq__a{animation:faqOpen .35s var(--ease)}
 @keyframes faqOpen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
+/* ── 공간 3장 · 찾아오시는 길 ── */
+.space--three{grid-template-columns:repeat(3,1fr)}
+@media(max-width:960px){.space--three{grid-template-columns:1fr}}
+.visit__ph{margin:0;border-radius:16px;overflow:hidden}
+.visit__ph img{width:100%;aspect-ratio:16/9;object-fit:cover}
+
 /* ── 마지막 CTA ── */
 .final{position:relative;overflow:hidden;text-align:center}
 .final__glow{
