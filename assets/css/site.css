@@ -418,16 +418,25 @@ h3{font-size:clamp(19px,2.2vw,23px);letter-spacing:-.03em;line-height:1.3}
 .pipe{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(36px,6vw,64px);align-items:center}
 .pipe__svg{width:100%;height:auto}
 .pipe__svg .ln{stroke:var(--brand);stroke-width:2;fill:none;stroke-dasharray:var(--len);stroke-dashoffset:var(--len)}
-.pipe__svg.is-in .ln{animation:draw 1.2s var(--ease) forwards}
+/* 검수까지는 천천히(1.6s), 검수가 끝나면 6갈래가 0.3s 만에 터진다 — 84초 동시 발행의 은유 */
+.pipe__svg.is-in .ln{animation:draw 1.6s var(--ease) forwards}
 .pipe__svg .ln--fan{stroke-width:1.5}
-.pipe__svg.is-in .ln--fan{animation:draw 1s var(--ease) 1s forwards}
-.pipe__svg.is-in .nd--fan{animation-delay:1.7s}
+.pipe__svg.is-in .ln--fan{animation:draw .3s cubic-bezier(.15,.85,.3,1) var(--fd,1.7s) forwards}
+.pipe__svg.is-in .nd--fan{animation-delay:2.1s}
+/* 발행 뒤 채널이 자라는 막대 */
+.pipe__svg .bar{opacity:0;transform:scaleY(0);transform-box:fill-box;transform-origin:bottom}
+.pipe__svg.is-in .bar{animation:barGrow .45s var(--ease) var(--bd,2.4s) forwards}
+@keyframes barGrow{
+  0%{opacity:0;transform:scaleY(0)}
+  60%{opacity:1;transform:scaleY(1.18)}
+  100%{opacity:1;transform:scaleY(1)}
+}
 .pipe__svg .nd{opacity:0}
 .pipe__svg.is-in .nd{animation:fade .5s var(--ease) forwards}
-.pipe__svg.is-in .nd:nth-of-type(1){animation-delay:.1s}
-.pipe__svg.is-in .nd:nth-of-type(2){animation-delay:.5s}
-.pipe__svg.is-in .nd:nth-of-type(3){animation-delay:.9s}
-.pipe__svg.is-in .nd:nth-of-type(4){animation-delay:1.2s}
+.pipe__svg.is-in .nd:nth-of-type(1){animation-delay:.15s}
+.pipe__svg.is-in .nd:nth-of-type(2){animation-delay:.65s}
+.pipe__svg.is-in .nd:nth-of-type(3){animation-delay:1.15s}
+.pipe__svg.is-in .nd:nth-of-type(4){animation-delay:1.55s}
 @keyframes draw{to{stroke-dashoffset:0}}
 .pipe__ch{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
 
