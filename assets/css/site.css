@@ -368,7 +368,7 @@ h3{font-size:clamp(19px,2.2vw,23px);letter-spacing:-.03em;line-height:1.3}
 
 /* ── 고객사 마퀴 ── */
 .marq{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.marq__row{display:flex;gap:14px;width:max-content;animation:slide 64s linear infinite}
+.marq__row{display:flex;gap:14px;width:max-content;animation:slide 90s linear infinite}
 .marq:hover .marq__row{animation-play-state:paused}
 .marq__row span{
   font-family:var(--display);font-size:clamp(18px,2.4vw,26px);font-weight:700;letter-spacing:-.035em;
