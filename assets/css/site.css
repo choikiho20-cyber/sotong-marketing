@@ -648,6 +648,15 @@ a.track__act:hover{border-color:var(--ink)}
 @keyframes faqOpen{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
 
 /* ── 공간 3장 · 찾아오시는 길 ── */
+/* 만든 것 — 제작물 카드 (.space 그리드 재사용, 흑백만 해제) */
+.work img{filter:none}
+.work figure{border:1px solid var(--paper-line)}
+.work a{display:block;text-decoration:none;color:inherit}
+.work figcaption{padding:14px 4px 2px}
+.work__t{display:block;font-family:var(--display);font-size:18px;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+.work__d{display:block;margin-top:6px;font-size:14px;font-weight:500;line-height:1.6;color:var(--muted-on-paper);word-break:keep-all}
+.work__u{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--brand)}
+.work a:hover .work__u{text-decoration:underline}
 .space--three{grid-template-columns:repeat(3,1fr)}
 @media(max-width:960px){.space--three{grid-template-columns:1fr}}
 .visit__ph{margin:0;border-radius:16px;overflow:hidden}
