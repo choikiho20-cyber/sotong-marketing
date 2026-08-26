@@ -602,6 +602,15 @@ a.track__act:hover{border-color:var(--ink)}
 .blogpost__cta .lede{margin-inline:auto}
 .blogpost__cta .btn{margin-top:26px}
 
+/* 강의 철학 블록 — 약점 인정 후 증거로 반격 */
+.creed{
+  margin-top:56px;max-width:62ch;
+  border-left:3px solid var(--brand);padding-left:22px;
+  font-size:clamp(16px,1.9vw,18px);line-height:1.85;color:var(--muted-on-paper);
+}
+.creed p{margin:0 0 16px}
+.creed b{color:var(--ink)}
+
 /* ── 자주 묻는 질문 ── */
 .faq__list{border-top:1px solid var(--paper-line)}
 .faq__item{border-bottom:1px solid var(--paper-line)}
