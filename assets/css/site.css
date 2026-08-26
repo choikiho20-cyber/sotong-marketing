@@ -741,6 +741,12 @@ a.track__act:hover{border-color:var(--ink)}
 .ftr__in{display:flex;flex-wrap:wrap;gap:24px;justify-content:space-between}
 .ftr b{color:var(--paper);font-weight:700}
 .ftr address{font-style:normal;line-height:1.9}
+/* 사업자 정보 — 전자상거래법 표시 의무 */
+.ftr__legal{margin-top:34px;padding-top:22px;border-top:1px solid var(--ink-line);
+  font-size:12.5px;line-height:1.9;color:#9A857E;word-break:keep-all}
+.ftr__legal p{margin:0}
+.ftr__legal b{color:#C4AFA8;font-weight:700}
+.ftr__legal a{color:inherit}
 
 /* ── 모바일 하단 액션바 ── */
 .dock{display:none}
