@@ -162,6 +162,35 @@
     });
   }
 
+  /* ── 4b. 커서에 맞으면 파티클이 튕겨나간다 (포인터 기기만) ── */
+  if (hero && canHover && !reduced) {
+    var kwEls = Array.prototype.slice.call(document.querySelectorAll('.hero__kw span'));
+    var kwTick = false;
+    hero.addEventListener('pointermove', function (ev) {
+      if (kwTick) return;
+      kwTick = true;
+      requestAnimationFrame(function () {
+        kwTick = false;
+        for (var i = 0; i < kwEls.length; i++) {
+          var el = kwEls[i];
+          var r = el.getBoundingClientRect();
+          if (!r.width) continue;
+          var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+          var dx = cx - ev.clientX, dy = cy - ev.clientY;
+          var dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 110 && dist > 0.1) {
+            var force = (110 - dist) * 1.6;
+            el.style.translate = (dx / dist * force).toFixed(0) + 'px ' + (dy / dist * force).toFixed(0) + 'px';
+            el.style.rotate = (dx / dist * 18).toFixed(0) + 'deg';
+          } else if (el.style.translate) {
+            el.style.translate = '0px 0px';   /* 멀어지면 스르륵 제자리로 */
+            el.style.rotate = '0deg';
+          }
+        }
+      });
+    });
+  }
+
   /* ── 5. 마그네틱 버튼 (포인터 기기만) ── */
   if (canHover && !reduced) {
     Array.prototype.forEach.call(document.querySelectorAll('[data-magnetic]'), function (btn) {
