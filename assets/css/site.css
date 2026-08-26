@@ -540,6 +540,23 @@ a.track__act:hover{border-color:var(--ink)}
 .ilink{color:var(--brand);border-bottom:1px solid rgba(255,27,90,.4);transition:border-color .2s}
 .ilink:hover{border-bottom-color:var(--brand)}
 .blogpage{padding-top:clamp(112px,15vw,150px)}
+/* 강의 히어로 — 실제 강의실 배경(저투명도). blog.html에는 안 걸리게 classhero로 분리 */
+.classhero{position:relative;overflow:hidden;isolation:isolate}
+.classhero::before{
+  content:"";position:absolute;inset:0;z-index:-2;
+  background:url(/assets/img/class-live.jpg) center 38%/cover no-repeat;
+  opacity:.26;filter:grayscale(.55) contrast(.92);
+}
+/* 글자 쪽은 더 어둡게 눌러 대비 확보 */
+.classhero::after{
+  content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(100deg,var(--ink) 16%,rgba(62,39,35,.90) 46%,rgba(62,39,35,.84));
+}
+@media(max-width:860px){
+  .classhero::before{opacity:.20}
+  .classhero::after{background:linear-gradient(180deg,rgba(62,39,35,.80),rgba(62,39,35,.92))}
+}
+@media(prefers-reduced-motion:no-preference){.classhero::before{will-change:auto}}
 .blog-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:18px}
 .blog-empty{color:var(--muted-on-ink);font-size:16px}
 .blog-card{
