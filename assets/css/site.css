@@ -622,6 +622,8 @@ a.track__act:hover{border-color:var(--ink)}
 .space--three{grid-template-columns:repeat(3,1fr)}
 @media(max-width:960px){.space--three{grid-template-columns:1fr}}
 .visit__ph{margin:0;border-radius:16px;overflow:hidden}
+.visit__maps{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.visit__maps .track__act{display:inline-flex;align-items:center;gap:8px}
 .visit__ph img{width:100%;aspect-ratio:16/9;object-fit:cover}
 
 /* ── 마지막 CTA ── */
