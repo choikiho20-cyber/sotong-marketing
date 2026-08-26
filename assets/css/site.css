@@ -662,6 +662,20 @@ a.track__act:hover{border-color:var(--ink)}
 .work__d{display:block;margin-top:6px;font-size:14px;font-weight:500;line-height:1.6;color:var(--muted-on-paper);word-break:keep-all}
 .work__u{display:inline-block;margin-top:10px;font-family:var(--mono);font-size:12px;font-weight:600;color:var(--brand)}
 .work a:hover .work__u{text-decoration:underline}
+/* 커리큘럼 — 4단계 x 2교시 */
+.curr{display:grid;grid-template-columns:repeat(2,1fr);gap:34px clamp(28px,5vw,56px);margin-top:44px}
+.curr__stage{border-top:2px solid var(--ink);padding-top:18px}
+.curr__stage h3{margin:0 0 6px;font-size:18px;letter-spacing:-.02em}
+.curr__stage h3 small{margin-left:8px;font-size:13px;font-weight:700;color:var(--brand)}
+.curr__do{margin:0 0 16px;font-size:14px;color:var(--muted-on-paper);word-break:keep-all}
+.curr__do b{color:var(--ink)}
+.curr ol{margin:0;padding:0;list-style:none;display:grid;gap:16px}
+.curr li{display:grid;grid-template-columns:54px 1fr;gap:2px 12px;align-items:baseline}
+.curr li em{grid-row:span 2;font-family:var(--body);font-size:12px;font-weight:700;font-style:normal;
+  color:var(--brand);border:1px solid var(--brand-soft);border-radius:6px;padding:3px 0;text-align:center}
+.curr li b{font-size:15.5px;font-weight:800;letter-spacing:-.02em;color:var(--ink);word-break:keep-all}
+.curr li span{font-size:13.5px;line-height:1.6;color:var(--muted-on-paper);word-break:keep-all}
+@media(max-width:600px){.curr{grid-template-columns:1fr}}
 .space--three{grid-template-columns:repeat(3,1fr)}
 @media(max-width:960px){.space--three{grid-template-columns:1fr}}
 .visit__ph{margin:0;border-radius:16px;overflow:hidden}
