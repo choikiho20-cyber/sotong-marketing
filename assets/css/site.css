@@ -694,6 +694,20 @@ a.track__act:hover{border-color:var(--ink)}
 .curr li b{font-size:15.5px;font-weight:800;letter-spacing:-.02em;color:var(--ink);word-break:keep-all}
 .curr li span{font-size:13.5px;line-height:1.6;color:var(--muted-on-paper);word-break:keep-all}
 @media(max-width:600px){.curr{grid-template-columns:1fr}}
+/* 공간 대여 — 요금표 */
+.rate{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:38px}
+.rate__card{border:1px solid var(--paper-line);border-radius:14px;padding:22px 24px;background:var(--paper-2)}
+.rate__card h3{margin:0 0 14px;font-size:19px;letter-spacing:-.02em}
+.rate__card h3 small{margin-left:8px;font-size:13px;font-weight:600;color:var(--muted-on-paper)}
+.rate__card dl{margin:0;display:grid;gap:9px}
+.rate__card dl>div{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+.rate__card dt{font-size:14.5px;color:var(--muted-on-paper);word-break:keep-all}
+.rate__card dd{margin:0;font-size:15.5px;font-weight:800;letter-spacing:-.02em;color:var(--ink);white-space:nowrap}
+.rate__card .is-reg{padding-top:9px;border-top:1px dashed var(--paper-line)}
+.rate__card .is-reg+.is-reg{padding-top:0;border-top:0}
+.rate__card .is-reg dd{color:var(--brand)}
+.rate__note{margin:18px 0 0;font-size:13.5px;line-height:1.7;word-break:keep-all}
+@media(max-width:700px){.rate{grid-template-columns:1fr}}
 /* 공간 대여 — 이용 혜택 */
 .perk{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:9px;max-width:640px}
 .perk li{position:relative;padding-left:20px;font-size:15px;line-height:1.6;color:var(--muted-on-paper);word-break:keep-all}
