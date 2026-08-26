@@ -216,8 +216,8 @@ a.track__act:hover{border-color:var(--ink)}
   margin:16px 0 0;font-size:12.5px;font-weight:600;color:var(--muted-on-paper);
   opacity:0;animation:fade .8s var(--ease) .72s forwards;
 }
-.hero__ch a,.hero__ch span{
-  display:inline-flex;align-items:center;gap:6px;text-decoration:none;
+.hero__ch span{
+  display:inline-flex;align-items:center;gap:6px;
   font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.03em;
   color:#8B8B94;border:1px solid var(--paper-line);border-radius:6px;padding:3px 9px;
   transition:color .2s,border-color .2s,background-color .2s;
@@ -225,8 +225,7 @@ a.track__act:hover{border-color:var(--ink)}
 .hero__ch img{height:13px;width:auto;max-width:18px;object-fit:contain;flex:none}
 .hero__ch svg{flex:none}
 .hero__ch .ko{font-family:var(--body);letter-spacing:-.01em}  /* 한글에 mono+자간 금지 */
-.hero__ch a:hover,.hero__ch span:hover{color:var(--ink);border-color:var(--ink)}
-.hero__ch a:hover{background:var(--paper-2)}
+.hero__ch span:hover{color:var(--ink);border-color:var(--ink)}
 
 /* 커서를 따라오는 스포트라이트 — 포인터 있는 기기에서만 JS가 --mx/--my를 갱신 */
 .hero__spot{
