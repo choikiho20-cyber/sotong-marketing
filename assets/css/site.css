@@ -467,7 +467,8 @@ a.track__act:hover{border-color:var(--ink)}
 .pipe__svg.is-in .bar{animation:barGrow .45s var(--ease) var(--bd,2.4s) forwards}
 /* 강의 페이지 워크플로우 — 5단계 + AI 추천 말풍선 (마지막이 하이라이트) */
 .pipe__svg.pipe--class.is-in .nd:nth-of-type(5){animation-delay:1.95s}
-.pipe__svg.pipe--class.is-in .nd:nth-of-type(6){animation-delay:2.6s}
+.pipe__svg.pipe--class.is-in .nd:nth-of-type(6){animation-delay:2.5s}   /* AI 3사 등장 */
+.pipe__svg.pipe--class.is-in .nd:nth-of-type(7){animation-delay:3.2s}   /* 추천 말풍선 */
 @keyframes barGrow{
   0%{opacity:0;transform:scaleY(0)}
   60%{opacity:1;transform:scaleY(1.18)}
