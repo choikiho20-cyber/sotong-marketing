@@ -602,6 +602,12 @@ a.track__act:hover{border-color:var(--ink)}
 .blogpost__cta .lede{margin-inline:auto}
 .blogpost__cta .btn{margin-top:26px}
 
+/* 강의 가격 줄 */
+.cprice{margin-top:16px;padding-top:14px;border-top:1px dashed var(--paper-line);font-size:16px;color:var(--muted-on-paper)}
+.cprice s{opacity:.6;margin-right:6px}
+.cprice b{color:var(--brand);font-size:19px;font-weight:800}
+.cprice small{font-size:13px}
+
 /* 강의 철학 블록 — 약점 인정 후 증거로 반격 */
 .creed{
   margin-top:56px;max-width:62ch;
