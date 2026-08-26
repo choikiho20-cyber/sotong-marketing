@@ -23,7 +23,8 @@
   if (clockEl) {
     try {
       var clockFmt = new Intl.DateTimeFormat('ko-KR', {
-        timeZone: 'Asia/Seoul', hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'short'
+        timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
+        hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'short'
       });
       var partValue = function (parts, type) {
         var p = parts.filter(function (x) { return x.type === type; })[0];
@@ -31,7 +32,9 @@
       };
       var updateClock = function () {
         var parts = clockFmt.formatToParts(new Date());
-        clockEl.textContent = partValue(parts, 'weekday') + ' ' + partValue(parts, 'hour') + ':' + partValue(parts, 'minute');
+        /* 예: 2026.08.26 수 09:06 */
+        clockEl.textContent = partValue(parts, 'year') + '.' + partValue(parts, 'month') + '.' + partValue(parts, 'day') +
+          ' ' + partValue(parts, 'weekday') + ' ' + partValue(parts, 'hour') + ':' + partValue(parts, 'minute');
       };
       updateClock();
       setInterval(updateClock, 30000);
