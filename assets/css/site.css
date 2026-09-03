@@ -836,3 +836,9 @@ a.track__act:hover{border-color:var(--ink)}
   .fab.is-on{transform:none}
   .progress{transition:none}
 }
+
+/* 블로그 목록 정적 폴백 — JS 실행 시 innerHTML로 대체됨. 크롤러는 이걸 본다 */
+.blog-fallback{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.blog-fallback a{font-weight:700;color:var(--ink);text-decoration:none}
+.blog-fallback a:hover{color:var(--brand)}
+.blog-fallback span{margin-left:8px;font-size:13px;color:var(--muted-on-paper)}
