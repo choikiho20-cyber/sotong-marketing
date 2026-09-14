@@ -318,3 +318,34 @@
   setTimeout(function () { place(STEPS[2]); }, base + 1000);
   setTimeout(function () { badge.classList.add('is-on'); }, base + 1750);
 })();
+
+/* ── 모집 팝업 — data-until 지나면 자동으로 안 뜬다 ───────── */
+(function () {
+  var pop = document.querySelector('[data-pop]');
+  if (!pop) return;
+
+  var until = new Date(pop.getAttribute('data-until'));
+  if (!(Date.now() < until.getTime())) return;          // 기간 지남 → 영구히 안 뜸
+
+  var KEY = 'pop-hidden-until';
+  var snooze = Number(localStorage.getItem(KEY) || 0);
+  if (Date.now() < snooze) return;                       // "오늘 하루 보지 않기" 유효
+
+  function close() {
+    if (pop.querySelector('[data-pop-today]').checked) {
+      var t = new Date(); t.setHours(24, 0, 0, 0);       // 다음 자정까지
+      try { localStorage.setItem(KEY, String(t.getTime())); } catch (e) {}
+    }
+    pop.hidden = true;
+    document.body.style.overflow = '';
+  }
+
+  pop.hidden = false;
+  document.body.style.overflow = 'hidden';
+  pop.querySelectorAll('[data-pop-close]').forEach(function (el) {
+    el.addEventListener('click', close);
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && !pop.hidden) close();
+  });
+})();
