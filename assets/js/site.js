@@ -349,3 +349,13 @@
     if (e.key === 'Escape' && !pop.hidden) close();
   });
 })();
+
+/* ── 업종 안내 띠 — ✕ 누르면 다시 안 뜬다 ───────── */
+(function () {
+  var x = document.querySelector('[data-band-close]');
+  if (!x) return;
+  x.addEventListener('click', function () {
+    document.documentElement.classList.remove('band-on');
+    try { localStorage.setItem('band-insurance-closed', '1'); } catch (e) {}
+  });
+})();

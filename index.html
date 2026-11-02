@@ -25,9 +25,9 @@
 <meta property="og:locale" content="ko_KR">
 <meta name="theme-color" content="#3E2723">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
-<script>document.documentElement.className+=" js"</script>
-<link rel="stylesheet" href="/assets/css/site.css?v=20261101a">
-<script defer src="/assets/js/site.js?v=20260914a"></script>
+<script>document.documentElement.className+=" js";try{if(!localStorage.getItem("band-insurance-closed"))document.documentElement.className+=" band-on"}catch(e){}</script>
+<link rel="stylesheet" href="/assets/css/site.css?v=20261102a">
+<script defer src="/assets/js/site.js?v=20261102a"></script>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -67,6 +67,12 @@
 <body>
 
 <div class="progress" data-progress aria-hidden="true"></div>
+
+<!-- ── 업종 안내 띠 — 보험설계사 유입용 (✕로 닫으면 다시 안 뜸) ── -->
+<aside class="band">
+  <a class="band__go" href="/insurance">보험설계사님이신가요? <b>설계사 전용 홈페이지 보기</b> <span class="arw" aria-hidden="true">&rarr;</span></a>
+  <button class="band__x" type="button" data-band-close aria-label="이 안내 닫기">&times;</button>
+</aside>
 
 <header class="hdr">
   <div class="wrap hdr__in">
@@ -233,20 +239,6 @@
     </div>
   </section>
 
-  <!-- ── 보험설계사 전용 ───────────────────────── -->
-  <section class="sheet sheet--paper" id="insurance">
-    <div class="wrap">
-      <div class="sec-head rv" style="margin-bottom:28px">
-        <p class="eyebrow">업종 전용</p>
-        <h2>보험설계사님이시라면,<br>이 페이지부터 보십시오.</h2>
-        <p class="lede muted">설계사님 이름으로 검색되는 내 홈페이지와, 매달 4편 올라가는 AI 글쓰기(글해줌)를 묶은 상품입니다.
-          제작 29만 원 / AI 글쓰기+홈페이지 관리 월 4만 9천 원 (첫 2개월 무료 · 언제든 해지) /
-          지점 5명 이상 월 3만 9천 원 + 마케팅 교육.</p>
-      </div>
-      <a class="btn btn--brand rv" href="/insurance">보험설계사 홈페이지 보기 <span class="arw" aria-hidden="true">→</span></a>
-    </div>
-  </section>
-
   <!-- ── 전체 업무 ───────────────────────────── -->
   <section class="sheet sheet--paper" id="services">
     <div class="wrap">
@@ -293,6 +285,15 @@
             <li>글해줌 블로그 자동발행</li><li>예약 · 문자 자동화</li><li>업무 자동화 앱 개발</li>
             <li>SEO · 사이트맵 · 검색등록</li><li>지원금 정보 안내</li><li>정부지원사업 컨설팅</li>
           </ul>
+        </div>
+        <div class="svc__grp rv">
+          <h3>업종 전용 — 보험설계사</h3>
+          <p>설계사님 이름으로 검색되는 개인 홈페이지와 글해줌 AI 글쓰기를 묶은 상품</p>
+          <ul>
+            <li>설계사 개인 홈페이지 제작</li><li>AI 글쓰기 매달 4편</li>
+            <li>지점 단위 도입 · 마케팅 교육</li>
+          </ul>
+          <p class="svc__go"><a href="/insurance">보험설계사 홈페이지 보기 <span class="arw" aria-hidden="true">&rarr;</span></a></p>
         </div>
       </div>
     </div>
