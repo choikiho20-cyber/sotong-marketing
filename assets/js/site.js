@@ -356,6 +356,6 @@
   if (!x) return;
   x.addEventListener('click', function () {
     document.documentElement.classList.remove('band-on');
-    try { localStorage.setItem('band-insurance-closed', '1'); } catch (e) {}
+    var v = (document.querySelector('.band') || {}).dataset; try { localStorage.setItem('band-insurance-closed', (v && v.v) || '1'); } catch (e) {}
   });
 })();

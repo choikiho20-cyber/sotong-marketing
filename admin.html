@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline' https://cdn.jsdelivr.net; font-src https://cdn.jsdelivr.net; img-src 'self' blob: data:; connect-src 'self' https://api.github.com; base-uri 'none'; form-action 'none'">
+<title>홈페이지 관리 · 소통마케팅센터</title>
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<style>
+:root{--paper:#F8F4F2;--ink:#2B1D1A;--ink2:#4E3B36;--stone:#7A6560;--line:rgba(62,39,35,.16);--brand:#FF1B5A;--brand-h:#D9134B;--deep:#3E2723;--bad:#B3261E;--good:#2E7D4F;
+  --sans:'Pretendard Variable',Pretendard,-apple-system,system-ui,sans-serif}
+*{box-sizing:border-box;margin:0}
+body{font-family:var(--sans);font-size:16px;line-height:1.65;color:var(--ink);background:var(--paper);word-break:keep-all}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer;border:0;background:none}
+:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+a{color:var(--brand-h)}
+header{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 16px;background:var(--deep);color:#fff}
+header b{font-weight:700}
+header .who{font-size:13px;color:#E6D6D1;flex:0 0 auto}
+nav.menu{position:sticky;top:52px;z-index:15;display:flex;gap:6px;overflow-x:auto;padding:10px 16px;background:#fff;border-bottom:1px solid var(--line);scrollbar-width:none}
+nav.menu button{flex:0 0 auto;min-height:40px;padding:0 14px;border:1px solid var(--line);border-radius:100px;font-size:14.5px;background:#fff}
+nav.menu button.on{background:var(--brand);border-color:var(--brand);color:#fff;font-weight:700}
+main{max-width:860px;margin:0 auto;padding:18px 16px 140px}
+.card{border:1px solid var(--line);background:#fff;padding:18px 16px;margin-bottom:14px;border-radius:8px}
+.card h2{font-size:17px;margin:0 0 4px}
+.hint{font-size:13.5px;color:var(--stone);margin:0 0 12px}
+label{display:block;font-size:13.5px;color:var(--ink2);margin:14px 0 5px}
+input[type=text],input[type=password],input[type=tel],input[type=time],textarea{width:100%;padding:12px 13px;background:var(--paper);border:1px solid var(--line);border-radius:6px;min-height:46px}
+textarea{min-height:88px;resize:vertical;line-height:1.6}
+input:focus,textarea:focus{outline:none;border-color:var(--brand);background:#fff}
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:0 16px;min-height:44px;border:1px solid var(--brand);color:var(--brand-h);border-radius:6px;font-size:15px;font-weight:600;background:#fff;text-decoration:none}
+.btn:hover{background:var(--brand);color:#fff}
+.btn.solid{background:var(--brand);color:#fff}
+.btn.solid:hover{background:var(--brand-h)}
+.btn.ghost{border-color:var(--line);color:var(--ink2)}
+.btn.sm{min-height:40px;padding:0 12px;font-size:14px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.list a{display:block;padding:12px 4px;border-top:1px solid var(--line);color:inherit;text-decoration:none}
+.list a:hover{background:var(--paper)}
+.list .d{font-size:13px;color:var(--stone)}
+.tools{position:sticky;top:112px;z-index:10;display:flex;flex-wrap:wrap;gap:6px;padding:8px 0;background:#fff;border-bottom:1px solid var(--line)}
+.tools button{min-height:38px;padding:0 11px;border:1px solid var(--line);border-radius:6px;font-size:14px;background:var(--paper)}
+.tools button:hover{border-color:var(--brand)}
+.tools button.on{background:var(--brand);color:#fff;border-color:var(--brand)}
+#ed{min-height:55vh;padding:14px 4px;outline:none;line-height:1.85}
+#ed h2{font-size:1.2rem;margin:30px 0 10px}
+#ed h3{font-size:1.05rem;margin:22px 0 8px}
+#ed p{margin:0 0 14px}
+#ed ul,#ed ol{margin:0 0 14px 22px}
+#ed img{display:block;max-width:100%;height:auto;margin:6px 0;border-radius:4px;cursor:pointer}
+#ed img[data-sel]{outline:3px solid var(--bad);outline-offset:2px}
+#ed table{width:100%;border-collapse:collapse;margin:0 0 14px}
+#ed th,#ed td{border:1px solid var(--line);padding:6px 8px}
+#raw{min-height:55vh;font-family:Consolas,monospace;font-size:13px}
+.item{border:1px solid var(--line);border-radius:6px;padding:12px;margin-top:12px;background:var(--paper)}
+.item label:first-child{margin-top:0}
+.item .rich{min-height:70px;padding:10px 12px;background:#fff;border:1px solid var(--line);border-radius:6px;outline:none;line-height:1.7}
+.item .rich:focus{border-color:var(--brand)}
+.item .bar{display:flex;gap:6px;justify-content:flex-end;margin-top:8px}
+.item h3{font-size:15px;margin:0}
+.rows{display:grid;grid-template-columns:1.3fr 1fr;gap:6px 8px;margin-top:8px}
+.rows input{min-width:0}
+.photo img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;border-radius:6px;background:#eee}
+.note{font-size:14px;margin-top:10px;color:var(--ink2);min-height:1.4em}
+.note.ok{color:var(--good)}.note.err{color:var(--bad)}
+.ro{padding:12px 13px;background:#f1ebe8;border-radius:6px;color:var(--ink2)}
+.switch{display:flex;align-items:center;gap:10px;margin-top:6px;font-weight:600;font-size:15px;color:var(--ink)}
+.switch input{width:22px;height:22px;accent-color:var(--brand)}
+.savebar{position:fixed;left:0;right:0;bottom:0;z-index:30;display:flex;align-items:center;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}
+.savebar .msg{font-size:14px;color:var(--ink2);flex:1;min-width:0}
+.savebar .msg.ok{color:var(--good)}.savebar .msg.err{color:var(--bad)}
+.guide summary{cursor:pointer;list-style:none;font-size:16px}
+.guide summary::-webkit-details-marker{display:none}
+.guide summary::before{content:'▸ ';color:var(--brand)}
+.guide details[open] summary::before{content:'▾ '}
+.guide h3{font-size:15px;margin:18px 0 6px;color:var(--brand-h)}
+.guide ul,.guide ol{margin:0 0 0 20px;font-size:15px}
+.guide li{margin:3px 0}
+[hidden]{display:none!important}
+@media (max-width:420px){.two{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><b>소통마케팅센터 홈페이지 관리</b><button class="who" id="who" title="나가기·관리자 연결">잠김</button></header>
+<nav class="menu" id="menu" hidden>
+  <button data-tab="blog" class="on">블로그</button>
+  <button data-tab="hero">첫 화면</button>
+  <button data-tab="band">공지 띠</button>
+  <button data-tab="contact">연락처·시간</button>
+  <button data-tab="faq">자주 묻는 질문</button>
+  <button data-tab="space">공간 대여</button>
+</nav>
+
+<main>
+  <section class="card" id="gate">
+    <h2>관리 화면 들어가기</h2>
+    <div id="pwBox">
+      <p class="hint" id="pwHint">비밀번호를 넣으세요. 이 기기에서는 다음부터 다시 묻지 않습니다.</p>
+      <label for="pw">비밀번호</label>
+      <input id="pw" type="password" autocomplete="current-password">
+      <div class="row"><button class="btn solid" id="pwGo">들어가기</button></div>
+    </div>
+    <details id="adv" style="margin-top:16px"><summary class="hint" style="cursor:pointer">관리자용: GitHub 토큰으로 연결</summary>
+      <label for="tok">GitHub 토큰</label>
+      <input id="tok" type="password" autocomplete="off" placeholder="github_pat_...">
+      <div class="row"><button class="btn" id="tokSave">연결</button></div>
+    </details>
+    <div class="row"><button class="btn ghost" id="tokClear" hidden>이 기기에서 나가기</button></div>
+  </section>
+
+  <!-- ── 블로그 ── -->
+  <section class="card" id="listCard" data-pane="blog" hidden>
+    <h2>블로그 글 목록</h2>
+    <p class="hint">고칠 글을 누르거나, 새 글을 직접 쓰세요.</p>
+    <div class="row" style="margin:0 0 12px"><button class="btn solid" id="newBtn">+ 새 글 쓰기</button><button class="btn ghost" id="pwSet">비밀번호 정하기·바꾸기</button></div>
+    <div class="list" id="list"></div>
+  </section>
+
+  <section class="card" id="edCard" hidden>
+    <h2 id="edHead">글 수정</h2>
+    <label for="title">제목</label>
+    <input id="title" type="text">
+    <label for="summary">요약 <small>(블로그 목록·검색 결과에 보이는 설명)</small></label>
+    <textarea id="summary"></textarea>
+    <label for="tags">태그 <small>(쉼표로 구분 · 예: 제천마케팅, 제천홈페이지제작)</small></label>
+    <input id="tags" type="text">
+    <label>본문</label>
+    <div class="tools">
+      <button data-cmd="formatBlock:h2">소제목</button>
+      <button data-cmd="formatBlock:p">보통 글</button>
+      <button data-cmd="bold">굵게</button>
+      <button data-cmd="insertUnorderedList">• 목록</button>
+      <button data-cmd="insertOrderedList">1. 목록</button>
+      <button id="addImg">사진 넣기</button>
+      <button id="delImg">고른 사진 빼기</button>
+      <button data-cmd="undo">되돌리기</button>
+      <button id="rawBtn">HTML</button>
+    </div>
+    <input id="file" type="file" accept="image/*" multiple hidden>
+    <div id="ed" contenteditable="true"></div>
+    <textarea id="raw" hidden></textarea>
+  </section>
+
+  <!-- ── 첫 화면 ── -->
+  <section class="card" data-pane="hero" hidden>
+    <h2>첫 화면</h2>
+    <p class="hint">홈페이지를 열면 가장 먼저 보이는 큰 제목과 소개 문장입니다.</p>
+    <label for="heroTitle">큰 제목 <small>(줄마다 엔터 · 2~3줄 권장)</small></label>
+    <textarea id="heroTitle" rows="3"></textarea>
+    <label for="heroMark">분홍색으로 강조할 말 <small>(제목 안에 있는 글자 그대로 · 비우면 강조 없음)</small></label>
+    <input id="heroMark" type="text">
+    <label for="heroLede">소개 문장</label>
+    <textarea id="heroLede" rows="4"></textarea>
+    <div class="row"><button class="btn solid" data-save="hero">저장</button></div>
+    <p class="note" id="note-hero"></p>
+  </section>
+
+  <!-- ── 공지 띠 ── -->
+  <section class="card" data-pane="band" hidden>
+    <h2>공지 띠</h2>
+    <p class="hint">홈페이지 맨 위에 보이는 얇은 분홍 띠입니다. 손님이 ✕로 닫으면 그 손님에게는 다시 안 보이고, 문구를 바꾸면 다시 보입니다.</p>
+    <label class="switch"><input id="bandOn" type="checkbox"> 띠 보이기</label>
+    <label for="bandText">문구</label>
+    <input id="bandText" type="text" placeholder="예: 11월 공간 대여 정기권 할인 중입니다.">
+    <label for="bandBold">굵게 보일 말 <small>(문구 뒤에 붙습니다 · 비워도 됩니다)</small></label>
+    <input id="bandBold" type="text">
+    <label for="bandHref">누르면 갈 주소 <small>(예: /insurance/ · /class.html · 비우면 누를 수 없는 안내)</small></label>
+    <input id="bandHref" type="text">
+    <div class="row"><button class="btn solid" data-save="band">저장</button></div>
+    <p class="note" id="note-band"></p>
+  </section>
+
+  <!-- ── 연락처·시간 ── -->
+  <section class="card" data-pane="contact" hidden>
+    <h2>연락처·시간</h2>
+    <p class="hint">여기서 바꾸면 홈페이지 모든 화면·블로그 글·검색엔진 안내 파일의 번호와 시간이 같이 바뀝니다.</p>
+    <label for="phone">대표 전화</label>
+    <input id="phone" type="tel" placeholder="043-651-5662">
+    <div class="two">
+      <div><label for="open">여는 시간</label><input id="open" type="time"></div>
+      <div><label for="close">닫는 시간</label><input id="close" type="time"></div>
+    </div>
+    <label>주소 <small>(보기만 — 주소가 바뀌면 소통마케팅센터에 알려 주세요)</small></label>
+    <div class="ro" id="addr"></div>
+    <div class="row"><button class="btn solid" data-save="contact">저장</button></div>
+    <p class="note" id="note-contact"></p>
+  </section>
+
+  <!-- ── 자주 묻는 질문 ── -->
+  <section class="card" data-pane="faq" hidden>
+    <h2>자주 묻는 질문</h2>
+    <p class="hint">질문은 손님 말투 그대로, 답은 첫 문장에 바로 결론을 쓰세요. 구글·AI 검색이 이 답을 그대로 가져갑니다.</p>
+    <div id="faqList"></div>
+    <div class="row"><button class="btn" id="faqAdd">+ 질문 추가</button><button class="btn solid" data-save="faq">저장</button></div>
+    <p class="note" id="note-faq"></p>
+  </section>
+
+  <!-- ── 공간 대여 ── -->
+  <section class="card" data-pane="space" hidden>
+    <h2>공간 대여 — 요금</h2>
+    <p class="hint">방 이름·인원·요금을 바꿀 수 있습니다. 네이버 예약 요금도 같은 날 맞춰 주세요.</p>
+    <div id="rateList"></div>
+    <h2 style="margin-top:22px">공간 대여 — 사진 3장</h2>
+    <p class="hint">[사진 바꾸기]로 폰 사진을 고르면 크기는 자동으로 줄어듭니다. 가로 사진이 잘 어울립니다.</p>
+    <div id="photoList"></div>
+    <input id="photoFile" type="file" accept="image/*" hidden>
+    <div class="row"><button class="btn solid" data-save="space">저장</button></div>
+    <p class="note" id="note-space"></p>
+  </section>
+
+  <section class="card guide" id="guide">
+    <details id="guideBox">
+      <summary><b>사용법</b> <span class="hint">— 처음이시면 눌러 보세요</span></summary>
+      <h3>1. 이 화면을 휴대폰 첫 화면에 두기</h3>
+      <ul>
+        <li><b>아이폰</b>: 아래 가운데 [공유] → [홈 화면에 추가]</li>
+        <li><b>갤럭시</b>: 오른쪽 위 [⋮] → [홈 화면에 추가]</li>
+        <li>비밀번호는 이 기기에서 한 번만 넣으면 됩니다.</li>
+      </ul>
+      <h3>2. 블로그 새 글 쓰기</h3>
+      <ol>
+        <li>위 메뉴 [블로그] → [+ 새 글 쓰기]</li>
+        <li><b>제목</b>: 지역 + 무엇 (예: 제천 공간 대여, 10명 회의는 얼마인가요?)</li>
+        <li><b>요약</b>: 이 글의 답을 한두 문장으로. 검색 결과에 그대로 보입니다.</li>
+        <li><b>태그</b>: 쉼표로 (예: 제천마케팅, 제천공간대여)</li>
+        <li><b>본문</b>: [소제목]은 <b>질문</b>으로, 바로 아래 첫 문장에 <b>답</b>을 적으세요.</li>
+        <li>[저장] → 1~2분 뒤 홈페이지 블로그에 올라갑니다.</li>
+      </ol>
+      <h3>3. 쓴 글 고치기 · 사진</h3>
+      <ul>
+        <li>글 목록에서 글을 누르거나, 홈페이지 블로그 글을 보다가 오른쪽 아래 <b>「이 글 수정」</b>을 누르세요.</li>
+        <li><b>사진 넣기</b>: 넣을 자리를 한 번 누르고 → [사진 넣기]. 여러 장 한 번에 됩니다.</li>
+        <li><b>사진 빼기</b>: 사진을 눌러 빨간 테두리가 생기면 → [고른 사진 빼기]</li>
+      </ul>
+      <h3>4. 첫 화면 · 공지 띠 바꾸기</h3>
+      <ul>
+        <li>[첫 화면]: 큰 제목은 줄마다 엔터. 분홍색으로 강조할 말은 제목에 있는 글자 그대로 적으세요.</li>
+        <li>[공지 띠]: 행사·모집·휴무 안내를 한 줄로. 끝나면 [띠 보이기]를 끄고 저장하세요.</li>
+      </ul>
+      <h3>5. 연락처·시간 · 자주 묻는 질문 · 공간 대여</h3>
+      <ul>
+        <li>전화·시간은 한 곳에서 바꾸면 홈페이지 전체가 같이 바뀝니다. <b>네이버 플레이스·카카오맵 번호도 똑같이</b> 맞춰야 검색이 헷갈리지 않습니다.</li>
+        <li>자주 묻는 질문: ↑↓로 순서를 바꾸고, [삭제]로 지웁니다. 마지막에 [저장]을 꼭 누르세요.</li>
+        <li>공간 대여 요금을 바꾸면 네이버 예약 요금도 같은 날 바꿔 주세요.</li>
+      </ul>
+      <h3>6. 검색에 잘 걸리는 요령</h3>
+      <ul>
+        <li>숫자로 쓰기 — 가격, 시간, 인원, 거리</li>
+        <li>실제 사진 쓰기, 지어낸 후기 쓰지 않기</li>
+        <li>글 하나에 주제 하나</li>
+      </ul>
+      <h3>7. 실수했을 때 · 안 될 때</h3>
+      <ul>
+        <li>저장 전이면 다른 메뉴로 나가면 바뀐 것이 버려집니다. 블로그 본문은 [되돌리기]도 됩니다.</li>
+        <li>「저장 실패」: 인터넷을 확인하고 [저장]을 다시 누르세요.</li>
+        <li>저장했는데 안 바뀜: 1~2분 기다린 뒤 홈페이지를 새로고침(휴대폰은 아래로 당기기)</li>
+        <li>비밀번호가 안 맞음: 관리하는 분께 새 비밀번호를 받으세요.</li>
+      </ul>
+      <h3>8. 비밀번호 관리 (관리하는 분)</h3>
+      <ul>
+        <li>비밀번호는 카톡 단체방에 올리지 마세요.</li>
+        <li>직원이 그만두면 [블로그] 화면의 [비밀번호 정하기·바꾸기]로 바꾸세요. 그러면 모든 사람이 새 비밀번호를 넣어야 합니다.</li>
+        <li>바꿀 때는 이 홈페이지 전용 GitHub 토큰이 한 번 필요합니다.</li>
+      </ul>
+      <p class="hint" style="margin-top:12px">홈페이지 제작 · 소통마케팅센터 010-2468-5662</p>
+    </details>
+  </section>
+
+  <p class="hint">저장하면 1~2분 뒤 홈페이지에 반영됩니다. 안 보이면 새로고침해 주세요 ·
+    <a href="/" target="_blank" rel="noopener">홈페이지 열기</a> ·
+    <a href="/blog.html" target="_blank" rel="noopener">블로그 열기</a> ·
+    <a href="https://github.com/choikiho20-cyber/sotong-marketing/commits/main" target="_blank" rel="noopener">변경 기록</a></p>
+</main>
+
+<div class="savebar" id="savebar" hidden>
+  <span class="msg" id="msg"></span>
+  <button class="btn ghost" id="back">목록</button>
+  <button class="btn solid" id="save">저장</button>
+</div>
+
+<script>
+/*LOGIC-START — 화면 없이 도는 순수 함수 (node 시험에서도 그대로 불러 쓴다) */
+/* 글 페이지 고치기 (글해줌 발행기가 이 글을 견본으로 복제하므로 구조는 그대로 두고 값만 바꾼다) */
+const RE_BODY=/(<div class="blog-post-content">)([\s\S]*?)(<\/div>\s*<\/article>)/;
+const escA=t=>String(t==null?'':t).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const unesc=t=>String(t).replace(/&lt;/g,'<').replace(/&gt;/g,'>').replace(/&quot;/g,'"').replace(/&rarr;/g,'→').replace(/&times;/g,'×').replace(/&amp;/g,'&');
+const plain=h=>unesc(String(h).replace(/<[^>]+>/g,'')).replace(/\s+/g,' ').trim();
+function getBody(html){const m=html.match(RE_BODY);return m?m[2].trim():null}
+function applyEdit(html,{title,summary,body,today,tags,published}){
+  const t=escA(title), s=escA(summary);
+  if(tags) html=html.replace(/<div class="blog-card-tags">[\s\S]*?<\/div>/,()=>'<div class="blog-card-tags">'+tags.map(x=>'<span class="blog-tag">#'+escA(x)+'</span>').join('')+'</div>')
+    .replace(/(<meta\s+name="keywords"\s+content=")[^"]*"/,(m,a)=>a+escA(tags.slice(0,5).join(', '))+'"');
+  html=html.replace(RE_BODY,(m,a,b,c)=>a+'\n'+body+'\n'+c)
+    .replace(/<title>[^<]*<\/title>/,()=>'<title>'+t+'</title>')
+    .replace(/<h1>[^<]*<\/h1>/,()=>'<h1>'+t+'</h1>')
+    .replace(/(<meta\s+property="og:title"\s+content=")[^"]*"/,(m,a)=>a+t+'"')
+    .replace(/(<meta\s+name="description"\s+content=")[^"]*"/,(m,a)=>a+s+'"')
+    .replace(/(<meta\s+property="og:description"\s+content=")[^"]*"/,(m,a)=>a+s+'"');
+  return html.replace(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g,(m,j)=>{
+    let ld; try{ld=JSON.parse(j)}catch(e){return m}
+    if(ld['@type']==='Article'){ld.headline=title;ld.description=summary;ld.dateModified=today;if(published)ld.datePublished=published;if(tags&&'keywords' in ld)ld.keywords=tags.slice(0,5).join(', ')}
+    else if(ld['@type']==='BreadcrumbList'&&(ld.itemListElement||[]).length){ld.itemListElement[ld.itemListElement.length-1].name=title}
+    else return m;
+    return '<script type="application/ld+json">'+JSON.stringify(ld).replace(/</g,'\\u003c')+'<\/script>';
+  });
+}
+/* 새 글: 가장 최근 글을 견본으로 복제 (글해줌 발행기와 같은 방식) */
+function makeNew(tpl,{id,date,title,summary,body,tags}){
+  const h=tpl.replace(/posts\/\d+\.html/g,'posts/'+id+'.html')
+    .replace(/(<meta\s+property="article:published_time"\s+content=")[^"]*"/,(m,a)=>a+date+'"')
+    .replace(/(<div class="blog-post-meta">[^<]*?)\d{4}-\d{2}-\d{2}/,(m,a)=>a+date)
+    .replace(/<script type="application\/ld\+json">\s*\{"@context"[^<]*?"@type"\s*:\s*"FAQPage"[\s\S]*?<\/script>\s*/g,'');
+  return applyEdit(h,{title,summary,body,today:date,tags,published:date});
+}
+function addSitemap(xml,url,date){
+  if(xml.includes('<loc>'+url+'</loc>')) return xml;
+  return xml.replace('</urlset>','  <url>\n    <loc>'+url+'</loc>\n    <lastmod>'+date+'</lastmod>\n    <changefreq>monthly</changefreq>\n    <priority>0.8</priority>\n  </url>\n</urlset>');
+}
+function addLlms(txt,title,url,summary){
+  if(txt.includes('('+url+')')||!txt.includes('## 글 목록')) return txt;
+  const nl=txt.includes('\r\n')?'\r\n':'\n';
+  return txt.replace(/## 글 목록(\r?\n)+/,()=>'## 글 목록'+nl+nl+'- ['+title+']('+url+'): '+summary.slice(0,200)+nl);
+}
+
+/* 홈 화면: 표식 <!--a:이름--> … <!--/a:이름--> 사이만 바꾼다. 나머지 모양은 손대지 않는다 */
+const mkRe=n=>new RegExp('(<!--a:'+n+'-->)([\\s\\S]*?)(<!--/a:'+n+'-->)');
+function getMk(html,n){const m=html.match(mkRe(n));if(!m)throw new Error('홈페이지에서 「'+n+'」 칸 표식을 찾지 못했습니다. 소통마케팅센터에 알려 주세요');return m[2]}
+function setMk(html,n,inner){getMk(html,n);return html.replace(mkRe(n),(m,a,b,c)=>a+inner+c)}
+
+function parseHero(html){
+  const inner=getMk(html,'hero'), mk=inner.match(/<em class="hero__mark">([\s\S]*?)<\/em>/);
+  return {lines:[...inner.matchAll(/<span class="ln"><span>([\s\S]*?)<\/span><\/span>/g)].map(m=>plain(m[1])),
+    mark:mk?plain(mk[1]):'', lede:plain(getMk(html,'lede'))};
+}
+function renderHero(html,{lines,mark,lede}){
+  let marked=false;
+  const ln=lines.map(l=>{let e=escA(l);const k=escA(mark);
+    if(k&&!marked&&e.includes(k)){e=e.replace(k,()=>'<em class="hero__mark">'+k+'</em>');marked=true}
+    return '\n          <span class="ln"><span>'+e+'</span></span>'}).join('')+'\n        ';
+  return setMk(setMk(html,'hero',ln),'lede',escA(lede));
+}
+
+function parseBand(html){
+  const inner=getMk(html,'band'), v=(html.match(/var B="([^"]*)";/)||[])[1];
+  const href=(inner.match(/href="([^"]*)"/)||[])[1]||'', b=inner.match(/<b>([\s\S]*?)<\/b>/);
+  const text=plain(inner.replace(/<b>[\s\S]*?<\/b>/,'').replace(/<span class="arw"[\s\S]*?<\/span>/,''));
+  return {on:!!v, text, bold:b?plain(b[1]):'', href:unesc(href)};
+}
+function renderBand(html,{on,text,bold,href},ver){
+  const v=on?ver:'';
+  const body=escA(text)+(bold?' <b>'+escA(bold)+'</b>':'');
+  const inner=href?'<a class="band__go" href="'+escA(href)+'">'+body+' <span class="arw" aria-hidden="true">&rarr;</span></a>'
+                  :'<span class="band__go">'+body+'</span>';
+  if(!/var B="[^"]*";/.test(html)||!/<aside class="band" data-v="[^"]*"/.test(html)) throw new Error('공지 띠 표식을 찾지 못했습니다');
+  return setMk(html,'band',inner).replace(/var B="[^"]*";/,()=>'var B="'+v+'";').replace(/(<aside class="band" data-v=")[^"]*"/,(m,a)=>a+v+'"');
+}
+
+function parseFaq(html){
+  return [...getMk(html,'faq').matchAll(/<summary>([\s\S]*?)<\/summary>\s*<div class="faq__a">([\s\S]*?)<\/div>/g)]
+    .map(m=>({q:plain(m[1]),a:m[2].replace(/\s+/g,' ').trim()}));
+}
+function renderFaq(html,items){
+  const vis=items.map(x=>'\n        <details class="faq__item">\n          <summary>'+escA(x.q)+'</summary>\n          <div class="faq__a">\n            '+x.a+'\n          </div>\n        </details>\n').join('')+'      ';
+  const ld={"@context":"https://schema.org","@type":"FAQPage","mainEntity":items.map(x=>({"@type":"Question","name":x.q,"acceptedAnswer":{"@type":"Answer","text":plain(x.a)}}))};
+  return setMk(setMk(html,'faq',vis),'faqld',items.length?'<script type="application/ld+json">'+JSON.stringify(ld).replace(/</g,'\\u003c')+'<\/script>':'');
+}
+
+function parseRate(html){
+  return getMk(html,'rate').split('<div class="rate__card').slice(1).map(c=>{
+    const h=c.match(/<h3>([\s\S]*?)(?:<small>([\s\S]*?)<\/small>)?\s*<\/h3>/)||[];
+    return {name:plain(h[1]||''),small:plain(h[2]||''),
+      rows:[...c.matchAll(/<div( class="is-reg")?><dt>([\s\S]*?)<\/dt><dd>([\s\S]*?)<\/dd><\/div>/g)].map(m=>({reg:!!m[1],k:plain(m[2]),v:plain(m[3])}))};
+  });
+}
+function renderRate(html,cards){
+  const s='<div class="rate">'+cards.map((c,i)=>'\n        <div class="rate__card rv"'+(i?' data-d="'+i+'"':'')+'>\n          <h3>'+escA(c.name)+(c.small?' <small>'+escA(c.small)+'</small>':'')+'</h3>\n          <dl>'+
+    c.rows.map(r=>'\n            <div'+(r.reg?' class="is-reg"':'')+'><dt>'+escA(r.k)+'</dt><dd>'+escA(r.v)+'</dd></div>').join('')+'\n          </dl>\n        </div>').join('')+'\n      </div>';
+  return setMk(html,'rate',s);
+}
+function llmsSpace(txt,cards){   // llms.txt 의 「- 공간 대여:」 줄만 새 요금으로
+  const nl=txt.includes('\r\n')?'\r\n':'\n', re=/- 공간 대여:[^\r\n]*(\r?\n  [^\r\n]*)*/;
+  const line='- 공간 대여: '+cards.map(c=>c.name+(c.small?'('+c.small+')':'')+' '+c.rows.map(r=>r.k+' '+r.v).join(' / ')).join('.'+nl+'  ')+'.';
+  return re.test(txt)?txt.replace(re,()=>line):txt;
+}
+
+function parsePhotos(html){
+  return [...getMk(html,'spacephotos').matchAll(/<img src="([^"]*)" alt="([^"]*)" width="(\d+)" height="(\d+)"[^>]*>\s*<figcaption>([\s\S]*?)<\/figcaption>/g)]
+    .map(m=>({src:m[1],alt:unesc(m[2]),w:+m[3],h:+m[4],cap:plain(m[5])}));
+}
+function renderPhotos(html,ps){
+  return setMk(html,'spacephotos',ps.map((p,i)=>'\n        <figure class="rv"'+(i?' data-d="'+i+'"':'')+'>\n          <span class="space__wipe" aria-hidden="true"></span>\n          <img src="'+escA(p.src)+'" alt="'+escA(p.alt)+'" width="'+p.w+'" height="'+p.h+'" loading="lazy">\n          <figcaption>'+escA(p.cap)+'</figcaption>\n        </figure>').join('')+'\n      ');
+}
+
+/* 연락처: 한 번호를 화면용(043-651-5662)·숫자만·국제형(+82-43-…) 세 모양 전부 바꾼다 */
+const intl=p=>'+82-'+p.replace(/^0/,'');
+function swapPhone(t,o,n){return o===n?t:t.split(intl(o)).join(intl(n)).split(o).join(n).split(o.replace(/-/g,'')).join(n.replace(/-/g,''))}
+function readContact(html){
+  const ld=html.match(/"telephone":\s*"([^"]*)"/), op=html.match(/"opens":\s*"([^"]*)"/), cl=html.match(/"closes":\s*"([^"]*)"/);
+  const a=html.match(/"streetAddress":\s*"([^"]*)"[\s\S]*?"addressLocality":\s*"([^"]*)"[\s\S]*?"addressRegion":\s*"([^"]*)"/);
+  return {phone:ld?ld[1].replace(/^\+82-/,'0'):'',open:op?op[1]:'',close:cl?cl[1]:'',addr:a?a[3]+' '+a[2]+' '+a[1]:''};
+}
+function swapHours(t,o,n){
+  if(o.open===n.open&&o.close===n.close) return t;
+  return t.split(o.open+' ~ '+o.close).join(n.open+' ~ '+n.close)
+    .replace(/("opens":\s*")[^"]*"/,(m,a)=>a+n.open+'"').replace(/("closes":\s*")[^"]*"/,(m,a)=>a+n.close+'"');
+}
+/*LOGIC-END*/
+
+/* 불러온 본문에서 스크립트·on* 속성 제거 (열쇠가 이 화면에 있으므로) */
+function clean(html){
+  const t=document.createElement('template'); t.innerHTML=html;
+  t.content.querySelectorAll('script,style,iframe,object,embed').forEach(n=>n.remove());
+  t.content.querySelectorAll('*').forEach(n=>[...n.attributes].forEach(a=>{
+    if(/^on/i.test(a.name)||/^\s*javascript:/i.test(a.value)||a.name==='data-sel'||a.name==='contenteditable') n.removeAttribute(a.name)}));
+  return t.innerHTML;
+}
+
+const REPO='choikiho20-cyber/sotong-marketing', BRANCH='main', KEY='sotong_gh_token', SITE='https://sotongmk.com';
+const API=`https://api.github.com/repos/${REPO}/contents/`;
+const $=id=>document.getElementById(id);
+const token=()=>{try{return localStorage.getItem(KEY)||''}catch(e){return ''}};
+const b64text=s=>{const u=new TextEncoder().encode(s);let b='';for(let i=0;i<u.length;i+=0x8000)b+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return btoa(b)};
+const b64dec=b=>new TextDecoder().decode(Uint8Array.from(atob(b.replace(/\n/g,'')),c=>c.charCodeAt(0)));
+const today=()=>new Date(Date.now()+9*36e5).toISOString().slice(0,10);
+let posts=[], cur=null, dirty=false, range=null, tab='blog';
+const pending=new Map();   // 화면용 임시 주소 → {b64}
+
+async function gh(path,opts={}){
+  const r=await fetch(API+path,{cache:'no-store',...opts,headers:{Authorization:'Bearer '+token(),Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28'}});
+  if(!r.ok){const e=new Error(r.status+' '+(await r.text()).slice(0,120));e.status=r.status;throw e}
+  return r.json();
+}
+const put=(path,b64,sha,message)=>gh(path,{method:'PUT',body:JSON.stringify({message,content:b64,branch:BRANCH,...(sha?{sha}:{})})});
+const readText=async path=>b64dec((await gh(path+'?ref='+BRANCH)).content);
+/* 파일 하나를 읽어 fn으로 고쳐 저장. 그사이 다른 저장(글해줌 등)이 끼면 다시 읽어서 고친다 */
+async function editFile(path,fn,message){
+  for(let tries=0;;tries++){
+    const f=await gh(path+'?ref='+BRANCH), t=b64dec(f.content), n=fn(t);
+    if(n===t) return false;
+    try{await put(path,b64text(n),f.sha,message);return true}
+    catch(e){if(tries<2&&(e.status===409||e.status===422))continue;throw e}
+  }
+}
+function msg(t,kind){const m=$('msg');m.textContent=t;m.className='msg '+(kind||'')}
+function note(k,t,kind){const m=$('note-'+k);if(!m)return;m.textContent=t;m.className='note '+(kind||'')}
+async function shrink(f,max){   // 폰 사진도 가로 max 이하 JPG로
+  const bm=await createImageBitmap(f,{imageOrientation:'from-image'});
+  const k=Math.min(1,max/bm.width), w=Math.round(bm.width*k), h=Math.round(bm.height*k);
+  const cv=document.createElement('canvas'); cv.width=w; cv.height=h; cv.getContext('2d').drawImage(bm,0,0,w,h);
+  const blob=await new Promise(r=>cv.toBlob(r,'image/jpeg',.85));
+  const b64=await new Promise(r=>{const fr=new FileReader();fr.onload=()=>r(fr.result.split(',')[1]);fr.readAsDataURL(blob)});
+  return {w,h,b64,url:URL.createObjectURL(blob)};
+}
+const stamp=()=>today().replace(/-/g,'')+Date.now().toString().slice(-6);
+
+/* ── 열쇠 ── */
+function gate(){
+  const on=!!token();
+  $('gate').hidden=on; $('menu').hidden=!on; $('tokClear').hidden=!on; $('edCard').hidden=true; $('savebar').hidden=true;
+  $('tok').value=''; $('tok').placeholder=on?'연결됨 — 바꾸시려면 새 토큰 입력':'github_pat_...';
+  $('pwBox').hidden=on;
+  $('who').textContent=on?'들어와 있음':'잠김';
+  showTab(on?tab:null);
+}
+$('tokSave').onclick=async()=>{
+  const v=$('tok').value.trim(); if(!v) return alert('토큰을 넣어 주세요.');
+  try{localStorage.setItem(KEY,v)}catch(e){return alert('이 브라우저는 저장이 막혀 있습니다.')}
+  try{await gh('posts.json?ref='+BRANCH); gate()}
+  catch(e){localStorage.removeItem(KEY); alert('연결 실패 — 토큰이나 권한을 확인해 주세요.\n'+e.message)}
+};
+$('tokClear').onclick=()=>{localStorage.removeItem(KEY);gate()};
+$('who').onclick=()=>{if(token())$('gate').hidden=!$('gate').hidden};
+
+/* ── 메뉴 ── */
+const loaders={blog:loadList,hero:loadHome,band:loadHome,contact:loadHome,faq:loadHome,space:loadHome};
+function showTab(t){
+  document.querySelectorAll('[data-pane]').forEach(s=>s.hidden=s.dataset.pane!==t);
+  document.querySelectorAll('#menu button').forEach(b=>{b.classList.toggle('on',b.dataset.tab===t);if(b.dataset.tab===t)b.scrollIntoView({block:'nearest',inline:'nearest'})});
+  if(t) loaders[t]();
+}
+$('menu').onclick=e=>{const b=e.target.closest('button[data-tab]');if(!b)return;
+  if(dirty&&!confirm('저장하지 않은 블로그 수정이 있습니다. 버리고 옮길까요?'))return;
+  dirty=false;$('edCard').hidden=true;$('savebar').hidden=true;tab=b.dataset.tab;showTab(tab)};
+
+/* ── 블로그 목록 ── */
+async function loadList(){
+  $('list').textContent='불러오는 중…';
+  try{
+    posts=JSON.parse(await readText('posts.json'));
+    $('list').innerHTML=posts.slice().sort((a,b)=>b.id-a.id).map(p=>
+      `<a href="#${p.id}" data-id="${p.id}"><div class="d">${escA(p.date)} · ${p.id}번 글</div>${escA(p.title)}</a>`).join('');
+  }catch(e){$('list').textContent='목록을 못 불러왔습니다: '+e.message;return}
+  const h=+location.hash.slice(1); if(h&&posts.some(p=>p.id===h)){history.replaceState(null,'',location.pathname);openPost(h)}
+}
+$('list').onclick=e=>{const a=e.target.closest('a[data-id]');if(!a)return;e.preventDefault();openPost(+a.dataset.id)};
+
+/* ── 블로그 편집 ── */
+async function openPost(id){
+  if(dirty&&!confirm('저장하지 않은 수정이 있습니다. 버리고 다른 글을 열까요?'))return;
+  $('savebar').hidden=false; msg('글 불러오는 중…');
+  try{
+    const html=await readText(`posts/${id}.html`);
+    const body=getBody(html); if(body==null) throw new Error('본문 칸을 찾지 못했습니다');
+    const p=posts.find(x=>x.id===id)||{};
+    show({id},p.title,p.summary,p.tags,clean(body),id+'번 글 수정','고친 뒤 [저장]을 누르세요');
+  }catch(e){msg('글을 못 불러왔습니다: '+e.message,'err')}
+}
+function show(c,title,summary,tags,body,head,hint){
+  cur=c; pending.clear(); range=null;
+  $('title').value=title||''; $('summary').value=summary||''; $('tags').value=(Array.isArray(tags)?tags:[]).join(', ');
+  $('ed').innerHTML=body; $('raw').hidden=true; $('ed').hidden=false; $('rawBtn').classList.remove('on');
+  $('edHead').textContent=head;
+  $('listCard').hidden=true; $('edCard').hidden=false; $('savebar').hidden=false;
+  dirty=false; msg(hint); scrollTo(0,0);
+}
+$('newBtn').onclick=()=>show({id:null},'','',[],'<h2>소제목을 질문으로 적어 주세요 (예: 10명 회의실은 얼마인가요?)</h2><p>바로 아래 첫 문장에 답을 적어 주세요.</p>','새 글 쓰기','다 쓰면 [저장]을 누르세요 — 바로 홈페이지 블로그에 올라갑니다');
+$('back').onclick=()=>{if(dirty&&!confirm('저장하지 않은 수정이 있습니다. 버리고 목록으로 갈까요?'))return;dirty=false;$('edCard').hidden=true;$('savebar').hidden=true;showTab('blog')};
+['title','summary','tags','ed','raw'].forEach(k=>$(k).addEventListener('input',()=>{dirty=true}));
+addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue=''}});
+
+document.execCommand('defaultParagraphSeparator',false,'p');
+document.addEventListener('selectionchange',()=>{const s=getSelection();if(s.rangeCount&&$('ed').contains(s.anchorNode))range=s.getRangeAt(0).cloneRange()});
+function restore(){$('ed').focus();if(range){const s=getSelection();s.removeAllRanges();s.addRange(range)}}
+document.querySelectorAll('[data-cmd]').forEach(b=>b.onclick=()=>{
+  const [c,v]=b.dataset.cmd.split(':'); restore(); document.execCommand(c,false,v||null); dirty=true;
+});
+/* 붙여넣기는 글자만 — 다른 사이트 서식이 따라오지 않게 */
+$('ed').addEventListener('paste',e=>{e.preventDefault();document.execCommand('insertText',false,e.clipboardData.getData('text/plain'))});
+$('ed').addEventListener('click',e=>{
+  $('ed').querySelectorAll('img[data-sel]').forEach(i=>i.removeAttribute('data-sel'));
+  if(e.target.tagName==='IMG') e.target.setAttribute('data-sel','');
+});
+$('delImg').onclick=()=>{
+  const i=$('ed').querySelector('img[data-sel]'); if(!i) return alert('뺄 사진을 먼저 눌러 고르세요.');
+  const p=i.parentElement; i.remove(); if(p&&p!==$('ed')&&!p.textContent.trim()&&!p.querySelector('img')) p.remove(); dirty=true;
+};
+$('rawBtn').onclick=()=>{
+  const toRaw=$('raw').hidden;
+  if(toRaw){$('raw').value=$('ed').innerHTML}else{$('ed').innerHTML=clean($('raw').value)}
+  $('raw').hidden=!toRaw; $('ed').hidden=toRaw; $('rawBtn').classList.toggle('on',toRaw);
+};
+$('addImg').onclick=()=>{if(!$('raw').hidden)return alert('HTML 보기를 끄고 넣어 주세요.');$('file').click()};
+$('file').onchange=async()=>{
+  const files=[...$('file').files]; $('file').value=''; if(!files.length) return;
+  msg('사진 준비 중…');
+  let html='';
+  for(const f of files){
+    try{const p=await shrink(f,1600); pending.set(p.url,{b64:p.b64});
+      html+=`<p><img src="${p.url}" alt="${escA($('title').value)} 사진" width="${p.w}" height="${p.h}" loading="lazy"></p>`;
+    }catch(e){alert(f.name+' — 사진을 읽지 못했습니다.')}
+  }
+  if(html){restore();document.execCommand('insertHTML',false,html);dirty=true;msg('사진은 [저장]할 때 올라갑니다')}
+};
+
+/* ── 블로그 저장: 사진 → 글 페이지 → posts.json → (새 글이면) sitemap·llms 덧붙이기 ── */
+$('save').onclick=async()=>{
+  if(!cur) return;
+  if(!$('raw').hidden) $('ed').innerHTML=clean($('raw').value);
+  const title=$('title').value.trim(), summary=$('summary').value.trim();
+  const tags=$('tags').value.split(/[,，]/).map(s=>s.trim().replace(/^#/,'')).filter(Boolean);
+  if(!title) return alert('제목을 넣어 주세요.');
+  if(!summary) return alert('요약을 한두 문장 넣어 주세요. 검색 결과에 보이는 설명입니다.');
+  $('save').disabled=true;
+  try{
+    const isNew=cur.id==null, date=today();
+    let tpl=null;
+    if(isNew){   // 번호 = 지금 가장 큰 번호 + 1, 그 글을 견본으로
+      const all=JSON.parse(await readText('posts.json'));
+      const max=Math.max(0,...all.map(x=>+x.id||0));
+      tpl=await readText(`posts/${max}.html`);
+      cur.id=max+1;
+    }
+    const imgs=[...$('ed').querySelectorAll('img')].filter(i=>pending.has(i.getAttribute('src')));
+    for(const [n,img] of imgs.entries()){
+      msg(`사진 올리는 중… (${n+1}/${imgs.length})`);
+      const path=`images/posts/${cur.id}_e${stamp()}${n}.jpg`;
+      await put(path,pending.get(img.getAttribute('src')).b64,null,`블로그 사진: ${cur.id}번 글`);
+      img.setAttribute('src','/'+path);
+    }
+    pending.clear();
+    $('ed').querySelectorAll('img[data-sel]').forEach(i=>i.removeAttribute('data-sel'));
+    const body=$('ed').innerHTML.trim();
+
+    msg('글 페이지 저장 중…');
+    if(isNew) await put(`posts/${cur.id}.html`,b64text(makeNew(tpl,{id:cur.id,date,title,summary,body,tags})),null,`블로그 새 글: ${cur.id}번`);
+    else await editFile(`posts/${cur.id}.html`,h=>applyEdit(h,{title,summary,body,today:date,tags}),`블로그 수정: ${cur.id}번 글`);
+
+    msg('목록 저장 중…');
+    await editFile('posts.json',t=>{   // 그사이 글해줌이 새 글을 올렸어도 다시 읽은 목록에 합친다
+      const all=JSON.parse(t), p=all.find(x=>x.id===cur.id);
+      if(isNew){ if(p) throw new Error(`그사이 ${cur.id}번 글이 먼저 올라왔습니다. 소통마케팅센터에 알려 주세요`);
+        all.unshift({id:cur.id,title,date,tags,summary,content:body}); }
+      else if(p){p.title=title;p.summary=summary;p.tags=tags;p.content=body}
+      posts=all; return JSON.stringify(all,null,2);
+    },`블로그 ${isNew?'새 글':'수정'}: ${cur.id}번 글 목록`);
+    if(isNew){   // 검색엔진 안내 파일에 새 주소 한 줄 추가 (다시 만들지 않고 덧붙이기만)
+      msg('검색 안내 파일 갱신 중…');
+      const url=`${SITE}/posts/${cur.id}.html`;
+      for(const [file,fn] of [['sitemap.xml',x=>addSitemap(x,url,date)],['llms.txt',x=>addLlms(x,title,url,summary)]]){
+        try{await editFile(file,fn,`블로그 새 글: ${file}`)}catch(e){}
+      }
+      $('edHead').textContent=cur.id+'번 글 수정';
+    }
+    dirty=false;
+    msg(`저장 완료 — 1~2분 뒤 ${SITE.replace('https://','')}/posts/${cur.id}.html 에 반영됩니다`,'ok');
+  }catch(e){msg('저장 실패: '+e.message+' — 다시 [저장]을 눌러 주세요','err')}
+  finally{$('save').disabled=false}
+};
+
+/* ── 홈 화면 칸들: index.html 하나를 읽어 각 메뉴에 채운다 ── */
+let faqs=[], cards=[], photos=[], photoSlot=-1;
+async function loadHome(){
+  const k=tab; note(k,'불러오는 중…');
+  let home; try{home=await readText('index.html')}catch(e){return note(k,'홈페이지를 못 불러왔습니다: '+e.message,'err')}
+  try{
+    const h=parseHero(home); $('heroTitle').value=h.lines.join('\n'); $('heroMark').value=h.mark; $('heroLede').value=h.lede;
+    const b=parseBand(home); $('bandOn').checked=b.on; $('bandText').value=b.text; $('bandBold').value=b.bold; $('bandHref').value=b.href;
+    const c=readContact(home); $('phone').value=c.phone; $('open').value=c.open; $('close').value=c.close; $('addr').textContent=c.addr;
+    faqs=parseFaq(home); drawFaq();
+    cards=parseRate(home); drawRate();
+    photos=parsePhotos(home); drawPhotos();
+    note(k,'');
+  }catch(e){note(k,e.message,'err')}
+}
+/* 저장할 때마다 최신 파일을 다시 읽어 그 칸만 바꾼다 (그사이 다른 저장이 있어도 덮어쓰지 않게) */
+async function saveHome(k,fn){
+  const b=document.querySelector(`[data-save="${k}"]`); b.disabled=true; note(k,'저장 중…');
+  try{if(await fn()!==false) note(k,'저장 완료 — 1~2분 뒤 홈페이지에 반영됩니다','ok')}
+  catch(e){note(k,'저장 실패: '+e.message+' — 다시 [저장]을 눌러 주세요','err')}
+  finally{b.disabled=false}
+}
+const savers={
+  hero:()=>saveHome('hero',async()=>{
+    const lines=$('heroTitle').value.split('\n').map(s=>s.trim()).filter(Boolean), mark=$('heroMark').value.trim(), lede=$('heroLede').value.trim().replace(/\s+/g,' ');
+    if(!lines.length) throw new Error('큰 제목을 넣어 주세요');
+    if(lines.length>4) throw new Error('큰 제목은 4줄까지만 됩니다');
+    if(mark&&!lines.some(l=>l.includes(mark))) throw new Error('강조할 말 「'+mark+'」이 제목 안에 없습니다');
+    if(!lede) throw new Error('소개 문장을 넣어 주세요');
+    await editFile('index.html',h=>renderHero(h,{lines,mark,lede}),'관리 화면: 첫 화면 문구');
+  }),
+  band:()=>saveHome('band',async()=>{
+    const v={on:$('bandOn').checked,text:$('bandText').value.trim(),bold:$('bandBold').value.trim(),href:$('bandHref').value.trim()};
+    if(v.on&&!v.text&&!v.bold) throw new Error('띠 문구를 넣어 주세요');
+    if(v.href&&!/^(\/|https:\/\/)/.test(v.href)) throw new Error('주소는 / 또는 https:// 로 시작해야 합니다');
+    await editFile('index.html',h=>renderBand(h,v,Date.now().toString(36)),'관리 화면: 공지 띠 '+(v.on?'켜기':'끄기'));
+  }),
+  contact:()=>saveHome('contact',async()=>{
+    const n={phone:$('phone').value.trim(),open:$('open').value,close:$('close').value};
+    if(!/^0\d{1,2}-\d{3,4}-\d{4}$/.test(n.phone)) throw new Error('전화는 043-651-5662 모양으로 넣어 주세요');
+    if(!n.open||!n.close) throw new Error('여는 시간·닫는 시간을 넣어 주세요');
+    const o=readContact(await readText('index.html'));
+    if(o.phone===n.phone&&o.open===n.open&&o.close===n.close){note('contact','바뀐 것이 없습니다');return false}
+    const files=['index.html','llms.txt'];
+    if(o.phone!==n.phone){   // 전화는 모든 화면·글·안내 파일에 있다
+      const ids=JSON.parse(await readText('posts.json')).map(p=>p.id);
+      files.push('class.html','blog.html','404.html','insurance/index.html','feed.xml','posts.json',...ids.map(i=>`posts/${i}.html`));
+    }
+    for(const [i,f] of files.entries()){
+      note('contact',`저장 중… (${i+1}/${files.length}) 끝날 때까지 이 화면을 닫지 마세요`);
+      try{await editFile(f,t=>swapHours(swapPhone(t,o.phone,n.phone),o,n),'관리 화면: 연락처·시간')}
+      catch(e){if(e.status!==404)throw e}
+    }
+  }),
+  faq:()=>saveHome('faq',async()=>{
+    const items=readFaqForm();
+    if(items.some(x=>!x.q||!plain(x.a))) throw new Error('비어 있는 질문이나 답이 있습니다');
+    await editFile('index.html',h=>renderFaq(h,items),'관리 화면: 자주 묻는 질문');
+  }),
+  space:()=>saveHome('space',async()=>{
+    const cs=readRateForm();
+    if(cs.some(c=>!c.name||c.rows.some(r=>!r.k||!r.v))) throw new Error('비어 있는 칸이 있습니다');
+    readCaps();
+    const ps=photos.map(p=>({...p}));
+    for(const [i,p] of ps.entries()){
+      if(!p.b64) continue;
+      note('space',`사진 올리는 중… (${i+1}번)`);
+      const path=`assets/img/space-${i+1}-${stamp()}.jpg`;
+      await put(path,p.b64,null,`관리 화면: 공간 사진 ${i+1}`);
+      p.src='/'+path; delete p.b64; delete p.url;
+    }
+    ps.forEach(p=>{if(p.cap)p.alt='소통마케팅센터 '+p.cap});
+    await editFile('index.html',h=>renderPhotos(renderRate(h,cs),ps),'관리 화면: 공간 대여');
+    await editFile('llms.txt',t=>llmsSpace(t,cs),'관리 화면: 공간 대여 요금');
+    photos=ps; cards=cs; drawPhotos();
+  })
+};
+document.querySelectorAll('[data-save]').forEach(b=>b.onclick=()=>savers[b.dataset.save]());
+
+/* 자주 묻는 질문 칸 */
+function drawFaq(){
+  $('faqList').innerHTML=faqs.map((x,i)=>`<div class="item" data-i="${i}">
+    <label>질문 ${i+1}</label><input type="text" data-q value="${escA(x.q)}">
+    <label>답</label><div class="rich" contenteditable="true" data-a>${clean(x.a)}</div>
+    <div class="bar"><button class="btn ghost sm" data-mv="-1" aria-label="위로">↑</button><button class="btn ghost sm" data-mv="1" aria-label="아래로">↓</button><button class="btn ghost sm" data-del>삭제</button></div></div>`).join('');
+}
+function readFaqForm(){return [...$('faqList').querySelectorAll('.item')].map(el=>({q:el.querySelector('[data-q]').value.trim(),a:clean(el.querySelector('[data-a]').innerHTML).replace(/\s+/g,' ').trim()}))}
+$('faqList').onclick=e=>{
+  const it=e.target.closest('.item'), b=e.target.closest('button'); if(!it||!b) return; const i=+it.dataset.i;
+  if(b.matches('[data-del]')){if(!confirm('이 질문을 지울까요? ([저장]을 눌러야 홈페이지에서 지워집니다)'))return;faqs=readFaqForm();faqs.splice(i,1);drawFaq()}
+  else if(b.matches('[data-mv]')){const j=i+ +b.dataset.mv;faqs=readFaqForm();if(j<0||j>=faqs.length)return;[faqs[i],faqs[j]]=[faqs[j],faqs[i]];drawFaq()}
+};
+$('faqList').addEventListener('paste',e=>{if(e.target.closest('[data-a]')){e.preventDefault();document.execCommand('insertText',false,e.clipboardData.getData('text/plain'))}});
+$('faqAdd').onclick=()=>{faqs=readFaqForm();faqs.push({q:'',a:''});drawFaq();$('faqList').lastElementChild.querySelector('[data-q]').focus()};
+
+/* 공간 요금 칸 */
+function drawRate(){
+  $('rateList').innerHTML=cards.map((c,i)=>`<div class="item" data-i="${i}"><div class="two">
+    <div><label>방 이름</label><input type="text" data-name value="${escA(c.name)}"></div>
+    <div><label>인원·특징</label><input type="text" data-small value="${escA(c.small)}"></div></div>
+    <div class="rows">${c.rows.map((r,j)=>`<input type="text" data-k="${j}" value="${escA(r.k)}" aria-label="항목"><input type="text" data-v="${j}" value="${escA(r.v)}" aria-label="요금">`).join('')}</div></div>`).join('');
+}
+function readRateForm(){return [...$('rateList').querySelectorAll('.item')].map((el,i)=>({name:el.querySelector('[data-name]').value.trim(),small:el.querySelector('[data-small]').value.trim(),
+  rows:cards[i].rows.map((r,j)=>({reg:r.reg,k:el.querySelector(`[data-k="${j}"]`).value.trim(),v:el.querySelector(`[data-v="${j}"]`).value.trim()}))}))}
+
+/* 공간 사진 칸 */
+function readCaps(){$('photoList').querySelectorAll('[data-cap]').forEach((el,i)=>{if(photos[i])photos[i].cap=el.value.trim()})}
+function drawPhotos(){
+  $('photoList').innerHTML=photos.map((p,i)=>`<div class="item photo"><h3>사진 ${i+1}</h3>
+    <img src="${escA(p.url||p.src)}" alt="" style="margin-top:8px">
+    <label>사진 설명</label><input type="text" data-cap value="${escA(p.cap)}">
+    <div class="bar"><button class="btn sm" data-ph="${i}">사진 바꾸기</button></div></div>`).join('');
+}
+$('photoList').onclick=e=>{const b=e.target.closest('[data-ph]');if(!b)return;readCaps();photoSlot=+b.dataset.ph;$('photoFile').click()};
+$('photoFile').onchange=async()=>{
+  const f=$('photoFile').files[0]; $('photoFile').value=''; if(!f||photoSlot<0) return;
+  try{const p=await shrink(f,1600); Object.assign(photos[photoSlot],{w:p.w,h:p.h,b64:p.b64,url:p.url}); drawPhotos(); note('space','사진은 [저장]할 때 올라갑니다')}
+  catch(e){alert('사진을 읽지 못했습니다.')}
+};
+
+/* ── 비밀번호 잠금: 우리 서버·글해줌 없이 이 홈페이지 혼자 동작 ──
+   admin-key.json 에 「이 저장소만 열리는 열쇠」를 비밀번호로 잠가(PBKDF2 60만 회 + AES-GCM) 넣어 둔다.
+   비밀번호가 맞으면 브라우저 안에서만 풀려 이 기기에 저장된다. 공개 저장소라 잠긴 파일은 누구나 받을 수 있으므로
+   비밀번호는 8자 이상·숫자만은 안 됨으로 강제한다(짧으면 컴퓨터로 대입해 풀 수 있음). */
+const u8b64=u=>{let b='';u.forEach(x=>b+=String.fromCharCode(x));return btoa(b)};
+const b64u8=s=>Uint8Array.from(atob(s),c=>c.charCodeAt(0));
+async function lockKey(pw,salt,iter){
+  const base=await crypto.subtle.importKey('raw',new TextEncoder().encode(pw.normalize('NFC')),'PBKDF2',false,['deriveKey']);
+  return crypto.subtle.deriveKey({name:'PBKDF2',salt,iterations:iter,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt']);
+}
+async function seal(tok,pw){
+  const iter=600000, salt=crypto.getRandomValues(new Uint8Array(16)), iv=crypto.getRandomValues(new Uint8Array(12));
+  const ct=new Uint8Array(await crypto.subtle.encrypt({name:'AES-GCM',iv},await lockKey(pw,salt,iter),new TextEncoder().encode(tok)));
+  return {v:1,iter,salt:u8b64(salt),iv:u8b64(iv),ct:u8b64(ct)};
+}
+async function unseal(box,pw){
+  return new TextDecoder().decode(await crypto.subtle.decrypt({name:'AES-GCM',iv:b64u8(box.iv)},await lockKey(pw,b64u8(box.salt),box.iter),b64u8(box.ct)));
+}
+let keyBox=null;
+fetch('/admin-key.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(b=>{keyBox=b&&b.ct?b:null;
+  if(!keyBox){$('pwHint').textContent='아직 비밀번호가 정해지지 않았습니다. 처음 한 번은 관리자가 아래 「관리자용」으로 연결해 비밀번호를 정해 주세요.';$('adv').open=true}
+}).catch(()=>{});
+async function pwLogin(){
+  const pw=$('pw').value; if(!pw) return;
+  if(!keyBox) return alert('아직 비밀번호가 정해지지 않았습니다.');
+  $('pwGo').disabled=true; $('pwGo').textContent='확인 중…';
+  try{
+    let tok; try{tok=await unseal(keyBox,pw)}catch(e){throw new Error('비밀번호가 맞지 않습니다.')}
+    localStorage.setItem(KEY,tok);
+    try{await gh('posts.json?ref='+BRANCH)}catch(e){localStorage.removeItem(KEY);throw new Error('비밀번호는 맞는데 열쇠가 만료됐거나 지워졌습니다. 관리자에게 비밀번호를 다시 정해 달라고 하세요.')}
+    $('pw').value=''; gate();
+  }catch(e){alert(e.message)}
+  finally{$('pwGo').disabled=false; $('pwGo').textContent='들어가기'}
+}
+$('pwGo').onclick=pwLogin;
+$('pw').addEventListener('keydown',e=>{if(e.key==='Enter')pwLogin()});
+$('pwSet').onclick=async()=>{
+  const k=(prompt('사장님·직원이 쓸 GitHub 토큰을 붙여 넣어 주세요.\n(이 홈페이지 저장소 하나만 · Contents 읽기/쓰기 · 기간은 길게(1년~만료 없음) 새로 만든 것)')||'').trim();
+  if(!k) return;
+  if(k===token()&&!confirm('지금 이 기기에 넣은 열쇠와 같습니다. 이 열쇠가 여러 홈페이지를 여는 열쇠라면 [취소]하고 이 홈페이지 전용 열쇠를 새로 만들어 주세요.\n이 홈페이지 전용이 맞으면 [확인].'))return;
+  try{const r=await fetch(API+'posts.json?ref='+BRANCH,{headers:{Authorization:'Bearer '+k,Accept:'application/vnd.github+json'}});if(!r.ok)throw 0}
+  catch(e){return alert('이 열쇠로는 이 홈페이지에 연결되지 않습니다. 저장소 선택과 권한(Contents 읽기/쓰기)을 확인해 주세요.')}
+  const p1=prompt('새 비밀번호 (8자 이상, 글자와 숫자를 섞어 주세요)\n예: sotong5662 · 소통마케팅5662'); if(!p1) return;
+  if(p1.length<8||/^\d+$/.test(p1)) return alert('8자 이상, 숫자만은 안 됩니다. 이 비밀번호 하나로 홈페이지를 고칠 수 있어서 짧으면 위험합니다.');
+  if(prompt('한 번 더 넣어 주세요')!==p1) return alert('두 번 넣은 비밀번호가 다릅니다.');
+  try{
+    const box=await seal(k,p1);
+    let sha=null; try{sha=(await gh('admin-key.json?ref='+BRANCH)).sha}catch(e){}
+    await put('admin-key.json',b64text(JSON.stringify(box)),sha,'관리 화면: 비밀번호 '+(sha?'변경':'설정'));
+    keyBox=box;
+    alert('비밀번호를 정했습니다. 1~2분 뒤부터 이 비밀번호로 들어갈 수 있습니다.\n\n사장님·직원분께는 주소와 비밀번호만 알려 주세요:\n'+location.origin+'/admin.html\n\n직원이 그만두면 비밀번호를 바꾸세요.');
+  }catch(e){alert('저장 실패: '+e.message)}
+};
+/* 이 기기에서 처음이면 사용법을 펼쳐 둔다 */
+try{if(!localStorage.getItem(KEY+'_guide')){$('guideBox').open=true;localStorage.setItem(KEY+'_guide','1')}}catch(e){}
+gate();
+</script>
+</body>
+</html>
