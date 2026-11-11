@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-525KXEG5EH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-525KXEG5EH');
+</script>
+<title>소통마케팅센터 - 클로드 코드에서 GPT로 검사 받는 법 총정리</title>
+<meta name="description" content="OpenAI가 2026년 3월 31일 공식 공개한 플러그인 codex-plugin-cc를 쓰면, 클로드 코드가 만든 결과물을 챗GPT(Codex)가 대신 검사해 줍니다. 필요한 건 클로드 코드 유료 구독, ChatGPT 계정(무료도 가능), Node.js 18.18 이">
+<meta name="keywords" content="클로드코드, 챗GPT검사, OpenAI코덱스, Codex플러그인, AI코드검수">
+<link rel="canonical" href="https://sotongmk.com/posts/23.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="소통마케팅센터 - 클로드 코드에서 GPT로 검사 받는 법 총정리">
+<meta property="og:description" content="OpenAI가 2026년 3월 31일 공식 공개한 플러그인 codex-plugin-cc를 쓰면, 클로드 코드가 만든 결과물을 챗GPT(Codex)가 대신 검사해 줍니다. 필요한 건 클로드 코드 유료 구독, ChatGPT 계정(무료도 가능), Node.js 18.18 이">
+<meta property="og:url" content="https://sotongmk.com/posts/23.html">
+<meta property="og:image" content="https://sotongmk.com/images/posts/23_1.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-11-12">
+<meta name="theme-color" content="#3E2723">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261108a">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "소통마케팅센터 - 클로드 코드에서 GPT로 검사 받는 법 총정리", "description": "OpenAI가 2026년 3월 31일 공식 공개한 플러그인 codex-plugin-cc를 쓰면, 클로드 코드가 만든 결과물을 챗GPT(Codex)가 대신 검사해 줍니다. 필요한 건 클로드 코드 유료 구독, ChatGPT 계정(무료도 가능), Node.js 18.18 이", "datePublished": "2026-11-12", "dateModified": "2026-11-12", "keywords": "클로드코드, 챗GPT검사, OpenAI코덱스, Codex플러그인, AI코드검수", "author": {"@type": "Organization", "name": "소통마케팅센터"}, "publisher": {"@type": "Organization", "name": "소통마케팅센터"}, "mainEntityOfPage": "https://sotongmk.com/posts/23.html", "image": "https://sotongmk.com/images/posts/23_1.jpg"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "홈", "item": "https://sotongmk.com/"}, {"@type": "ListItem", "position": 2, "name": "블로그", "item": "https://sotongmk.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "소통마케팅센터 - 클로드 코드에서 GPT로 검사 받는 법 총정리", "item": "https://sotongmk.com/posts/23.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "챗GPT 유료 계정이 없어도 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "네, 무료 계정으로 로그인해 실제 검사까지 진행됩니다. 다만 사용량 한도는 있습니다."}}, {"@type": "Question", "name": "코딩을 몰라도 쓸 수 있나요?", "acceptedAnswer": {"@type": "Answer", "text": "설치 명령 몇 줄만 따라 치면 되고, 이후에는 클로드에게 말로 검사를 요청하면 됩니다."}}, {"@type": "Question", "name": "맥에서도 윈도우처럼 막히나요?", "acceptedAnswer": {"@type": "Answer", "text": "직접 확인한 환경은 윈도우뿐이라 맥은 단정해 말씀드리기 어렵습니다."}}]}</script>
+</head>
+<body>
+
+<div class="progress" data-progress aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="hdr__logo" href="/" aria-label="소통마케팅센터 홈">
+      <img src="/assets/img/logo-wordmark-brown.png" alt="소통마케팅센터" width="760" height="301">
+    </a>
+    <span class="hdr__clock" data-clock aria-hidden="true">— --:--</span>
+    <nav class="hdr__nav" aria-label="주요 메뉴">
+      <a href="/#tracks">서비스</a>
+      <a href="/#services">전체 업무</a>
+      <a href="/#geulhaejum">글해줌</a>
+      <a href="/blog.html">블로그</a>
+      <a href="/#faq">자주 묻는 질문</a>
+    </nav>
+    <a class="btn btn--brand hdr__cta" href="/#contact" data-magnetic>무료 진단 받기</a>
+  </div>
+</header>
+
+<main>
+  <article class="sheet sheet--ink blogpost">
+    <div class="wrap wrap--narrow">
+      <a class="blogpost__back" href="/blog.html">← 블로그 목록</a>
+      <h1>소통마케팅센터 - 클로드 코드에서 GPT로 검사 받는 법 총정리</h1>
+      <div class="blog-post-meta">2026-11-12 · 소통마케팅센터</div>
+      <div class="blog-card-tags"><span class="blog-tag">#클로드코드</span><span class="blog-tag">#챗GPT검사</span><span class="blog-tag">#OpenAI코덱스</span><span class="blog-tag">#Codex플러그인</span><span class="blog-tag">#AI코드검수</span><span class="blog-tag">#제천마케팅교육</span><span class="blog-tag">#AI정복하기</span><span class="blog-tag">#소통마케팅센터</span><span class="blog-tag">#1인사업자AI</span><span class="blog-tag">#로컬비즈니스AI활용</span></div>
+
+      <div class="blog-post-content">
+<p><img src="/images/posts/23_1.jpg" alt="소통마케팅센터 - 클로드 코드에서 GPT로 검사 받는 법 총정리 대표 사진" loading="lazy"></p>
+<p>OpenAI가 2026년 3월 31일 공식 공개한 플러그인 codex-plugin-cc를 쓰면, 클로드 코드가 만든 결과물을 챗GPT(Codex)가 대신 검사해 줍니다. 필요한 건 클로드 코드 유료 구독, ChatGPT 계정(무료도 가능), Node.js 18.18 이상이 전부고 추가 비용은 없습니다.</p>
+<p>다만 윈도우에서는 기본 검사 명령이 그대로 막히는 지점이 있어서 우회 방법까지 정리해 드립니다.</p>
+<h2>클로드와 GPT를 같이 쓰면 뭐가 달라지나요?</h2>
+<p>한 AI가 만든 걸 같은 AI가 다시 검사하면 놓친 부분을 또 놓치는 경우가 많습니다. 그래서 역할을 이렇게 나눕니다.</p>
+<ol><li>만들기 — 클로드 코드가 담당</li><li>검사 — GPT가 읽기만 하고 지적</li><li>마무리 — 클로드가 고치거나, 지적이 틀리면 반박</li></ol>
+<p>여기서 말하는 클로드는 채팅용이 아니라 코드·파일 작업용 클로드 코드입니다. 홈페이지나 자동화 프로그램처럼 파일을 직접 만드는 작업을 검사할 때 쓰는 연결입니다.</p>
+<h2>설치는 어떻게 하나요?</h2>
+<p>터미널과 클로드 코드를 오가며 다섯 단계만 거치면 끝입니다.</p>
+<ol><li>node -v로 버전 확인 (18.18 이상)</li><li>npm install -g @openai/codex 실행</li><li>클로드 코드에서 /plugin marketplace add openai/codex-plugin-cc 입력</li><li>/plugin install codex@openai-codex 후 /reload-plugins</li><li>codex login으로 ChatGPT 로그인, codex login status로 연결 확인</li></ol>
+<p>설치가 끝나면 클로드 코드에서 쓰는 명령은 /codex:review(검토), /codex:adversarial-review(깐깐한 검토), /codex:rescue(막힌 작업 요청) 세 가지입니다. 실제로 ChatGPT 무료 계정으로 로그인해 검사까지 문제없이 진행됐습니다.</p>
+<h2>실제로 검사를 시켜보니 어땠나요?</h2>
+<p>가상의 빵집 페이지를 만들어 예약 폼을 검사시킨 결과, 1차 검사에서 문제 4개가 나왔습니다.</p>
+<ol><li>예약 문의가 어디에도 전송되지 않는데 "접수됐어요"로 표시</li><li>입력값이 코드로 실행될 수 있는 보안 허점</li><li>20시 마감인데 20시 59분까지 영업 중으로 표시</li><li>지난 날짜로도 예약이 들어가는 오류</li></ol>
+<p>클로드가 4개를 전부 수정했고, 2차 검사에서 나온 작은 문제 3개도 이어서 수정했습니다. 3차 검사에서는 GPT가 "줄바꿈 표시 문제"를 지적했지만, 해당 입력칸은 애초에 줄바꿈이 불가능한 구조라 클로드가 근거를 들어 반박하고 통과 판정을 받았습니다.</p>
+<p>한쪽 지적을 무조건 따르지 않고 서로 근거로 점검하는 구조라는 점이 확인됐습니다.</p>
+<h2>윈도우에서 막히는 지점은 어디인가요?</h2>
+<p>윈도우에서는 /codex:review 실행 시 보안 장치에 막혀 GPT가 파일을 못 읽고 "검사할 게 없다"로 끝나는 경우가 있습니다. 이럴 땐 파일을 직접 읽히지 말고, 바뀐 내용(git diff)을 텍스트로 정리해 직접 전달하면 됩니다.</p>
+<p>codex exec --skip-git-repo-check -s read-only 명령으로 읽기 전용 검사를 요청하면 역할 분담이 그대로 지켜집니다. 클로드에게 "윈도우라 diff를 붙여서 보내 줘"라고 말로 요청하면 클로드가 알아서 처리해 줍니다.</p>
+<h2>자주 묻는 질문</h2>
+<ol><li><strong>챗GPT 유료 계정이 없어도 되나요?</strong><br>네, 무료 계정으로 로그인해 실제 검사까지 진행됩니다. 다만 사용량 한도는 있습니다.</li><li><strong>코딩을 몰라도 쓸 수 있나요?</strong><br>설치 명령 몇 줄만 따라 치면 되고, 이후에는 클로드에게 말로 검사를 요청하면 됩니다.</li><li><strong>맥에서도 윈도우처럼 막히나요?</strong><br>직접 확인한 환경은 윈도우뿐이라 맥은 단정해 말씀드리기 어렵습니다.</li></ol>
+<p>AI 도구는 자영업 현장에서도 빠르게 자리잡고 있지만, 직접 설치하고 검증하기까지는 시행착오가 따릅니다. 소통마케팅센터는 이런 AI 도구를 사장님이 직접 다룰 수 있도록 AI 정복하기 기초반(120,000원), 심화반(240,000원), AI지도사 자격증반(360,000원)을 운영하고 있습니다.</p>
+<p>대행을 맡기기보다 직접 운영 능력을 키우고 싶은 제천, 단양, 영월, 원주 지역 사장님들이 주로 찾는 과정입니다. 한 줄 요약: 클로드가 만들고 GPT가 검사하는 구조는 이미 쓰는 구독만으로 가능하며, 윈도우에서는 변경 내용을 직접 전달하는 방식으로 우회하면 됩니다.</p><p style="margin:22px 0 8px;font-weight:bold;font-size:1.05em;">소통마케팅센터 이용 안내</p><table style="width:100%;border-collapse:collapse;"><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">주소</th><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">충북 제천시 하소로 20 2층</td></tr><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">영업시간</th><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">10:00~22:00</td></tr><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">주차</th><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">가능</td></tr><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">전화</th><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);"><a href="tel:0436515662" style="color:#1a73e8;">043-651-5662</a></td></tr><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">홈페이지</th><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);"><a href="https://sotongmk.com/" target="_blank" rel="noopener" style="color:#1a73e8;">sotongmk.com</a></td></tr></table>
+</div>
+  </article>
+
+  <section class="sheet sheet--paper blogpost__cta">
+    <div class="wrap">
+      <h2>지금 가게 이름으로 검색해 보셨습니까?</h2>
+      <p class="lede muted">상호와 업종만 남겨주시면 현재 온라인에서 어떻게 보이는지 정리해서 알려드립니다. 비용은 없습니다.</p>
+      <a class="btn btn--brand" href="https://naver.me/FdC4kHcY" target="_blank" rel="noopener">무료 진단 신청하기 <span class="arw" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr__in">
+    <div>
+      <p><b>소통마케팅센터</b> — 소셜로 통하는 소상공인의 통로</p>
+      <address>
+        충북 제천시 하소로 20<br>
+        전화 <a href="tel:043-651-5662">043-651-5662</a>
+      </address>
+    </div>
+    <div>
+      <p><b>채널</b></p>
+      <address>
+        <a href="https://blog.naver.com/stsnsm5662" target="_blank" rel="noopener">네이버 블로그</a><br>
+        <a href="https://www.instagram.com/jecheon_mateomuk" target="_blank" rel="noopener">인스타그램</a>
+      </address>
+    </div>
+  </div>
+  <div class="wrap ftr__legal">
+    <p>상호 <b>소통마케팅센터</b> · 대표 최기호 · 사업자등록번호 790-23-02129 · 통신판매업 신고 제2025-충북제천-0080호</p>
+    <p>충청북도 제천시 하소로 20, 2층 (하소동) · 010-2468-5662 · <a href="mailto:choikiho20@gmail.com">choikiho20@gmail.com</a></p>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="빠른 연락">
+  <a href="tel:043-651-5662">전화</a>
+  <a href="https://open.kakao.com/o/svU2DWnh" target="_blank" rel="noopener">카톡 상담</a>
+  <a class="is-primary" href="https://naver.me/FdC4kHcY" target="_blank" rel="noopener">무료 진단</a>
+</nav>
+
+<script src="/assets/js/site.js?v=20261108a" defer></script>
+
+<script>/* 관리 화면에 들어와 있는 기기에서만 「이 글 수정」 버튼 */
+(function(){try{if(!localStorage.getItem('sotong_gh_token'))return}catch(e){return}
+var m=location.pathname.match(/(\d+)\.html$/);if(!m)return;var a=document.createElement('a');
+a.href='/admin.html#'+m[1];a.textContent='이 글 수정';a.style.cssText='position:fixed;right:16px;bottom:84px;z-index:50;padding:10px 16px;border-radius:100px;background:#FF1B5A;color:#fff;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.35)';
+document.body.appendChild(a)})();</script>
+</body>
+</html>
