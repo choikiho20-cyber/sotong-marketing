@@ -1,5 +1,5 @@
 /* 소통마케팅센터 — 홈 모션
-   1) 헤더 경계선  1b) 헤더 실시간 시계  2) 스크롤 진행바  3) 스크롤 리빌 + SVG 흐름 신호
+   1) 헤더 경계선  2) 스크롤 진행바  3) 스크롤 리빌 + SVG 흐름 신호
    4) 히어로 스포트라이트  5) 마그네틱 버튼  6) 카드 3D 틸트
    7) 숫자 카운터  8) 히어로 검색순위 시연 */
 (function () {
@@ -16,31 +16,6 @@
     };
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-  }
-
-  /* ── 1b. 헤더 실시간 시계 (제천 = 한국표준시 고정) ── */
-  var clockEl = document.querySelector('[data-clock]');
-  if (clockEl) {
-    try {
-      var clockFmt = new Intl.DateTimeFormat('ko-KR', {
-        timeZone: 'Asia/Seoul', year: 'numeric', month: '2-digit', day: '2-digit',
-        hour: '2-digit', minute: '2-digit', hour12: false, weekday: 'short'
-      });
-      var partValue = function (parts, type) {
-        var p = parts.filter(function (x) { return x.type === type; })[0];
-        return p ? p.value : '';
-      };
-      var updateClock = function () {
-        var parts = clockFmt.formatToParts(new Date());
-        /* 예: 2026.08.26 수 09:06 */
-        clockEl.textContent = partValue(parts, 'year') + '.' + partValue(parts, 'month') + '.' + partValue(parts, 'day') +
-          ' ' + partValue(parts, 'weekday') + ' ' + partValue(parts, 'hour') + ':' + partValue(parts, 'minute');
-      };
-      updateClock();
-      setInterval(updateClock, 30000);
-    } catch (e) {
-      clockEl.style.display = 'none';
-    }
   }
 
   /* ── 2. 스크롤 진행바 ── */
@@ -162,35 +137,6 @@
     });
   }
 
-  /* ── 4b. 커서에 맞으면 파티클이 튕겨나간다 (포인터 기기만) ── */
-  if (hero && canHover && !reduced) {
-    var kwEls = Array.prototype.slice.call(document.querySelectorAll('.hero__kw span'));
-    var kwTick = false;
-    hero.addEventListener('pointermove', function (ev) {
-      if (kwTick) return;
-      kwTick = true;
-      requestAnimationFrame(function () {
-        kwTick = false;
-        for (var i = 0; i < kwEls.length; i++) {
-          var el = kwEls[i];
-          var r = el.getBoundingClientRect();
-          if (!r.width) continue;
-          var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
-          var dx = cx - ev.clientX, dy = cy - ev.clientY;
-          var dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 110 && dist > 0.1) {
-            var force = (110 - dist) * 1.6;
-            el.style.translate = (dx / dist * force).toFixed(0) + 'px ' + (dy / dist * force).toFixed(0) + 'px';
-            el.style.rotate = (dx / dist * 18).toFixed(0) + 'deg';
-          } else if (el.style.translate) {
-            el.style.translate = '0px 0px';   /* 멀어지면 스르륵 제자리로 */
-            el.style.rotate = '0deg';
-          }
-        }
-      });
-    });
-  }
-
   /* ── 5. 마그네틱 버튼 (포인터 기기만) ── */
   if (canHover && !reduced) {
     Array.prototype.forEach.call(document.querySelectorAll('[data-magnetic]'), function (btn) {
@@ -254,6 +200,46 @@
       Array.prototype.forEach.call(counters, function (el) { cio.observe(el); });
     }
   }
+
+  /* ── 9. 스크롤 장면 (11/9) — 한 문장 채우기 · 강의 사진 확대 · 사례 사이트 스크롤 ──
+     전부 스크롤 위치 하나로 움직이니 폰에서도 PC와 똑같이 보인다 */
+  (function () {
+    var say = document.querySelector('[data-say]');
+    var lines = say ? say.querySelectorAll('.say__ln') : [];
+    var scene = document.querySelector('[data-scene]');
+    var shots = document.querySelectorAll('.work .shot img');
+    if (reduced) return;
+    var clamp = function (v) { return v < 0 ? 0 : v > 1 ? 1 : v; };
+    /* 고정(sticky) 구간을 얼마나 지나왔는지 0~1 */
+    var pinned = function (el, vh) {
+      var r = el.getBoundingClientRect();
+      return clamp(-r.top / (r.height - vh));
+    };
+    var ticking = false;
+    var tick = function () {
+      ticking = false;
+      var vh = window.innerHeight;
+      if (say) {
+        var p = pinned(say, vh) * 1.15;            /* 끝나기 조금 전에 다 채워 두고 잠깐 머문다 */
+        for (var i = 0; i < lines.length; i++) lines[i].style.setProperty('--f', clamp(p * lines.length - i).toFixed(3));
+      }
+      if (scene) {
+        var q = pinned(scene, vh);
+        scene.style.setProperty('--p', clamp(q / .7).toFixed(3));
+        scene.style.setProperty('--cap', clamp((q - .55) / .3).toFixed(3));
+      }
+      for (var k = 0; k < shots.length; k++) {
+        var r = shots[k].parentNode.getBoundingClientRect();
+        if (r.bottom < 0 || r.top > vh) continue;
+        var s = clamp(((vh - r.top) / (vh + r.height) - .2) / .6);
+        shots[k].style.setProperty('--sp', s.toFixed(3));
+      }
+    };
+    var onScroll = function () { if (!ticking) { ticking = true; requestAnimationFrame(tick); } };
+    tick();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+  })();
 
   /* ── 8. 히어로 검색순위 시연 ── */
   var rank = document.querySelector('[data-rank]');

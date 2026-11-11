@@ -97,11 +97,6 @@ h3{font-size:clamp(19px,2.2vw,23px);letter-spacing:-.03em;line-height:1.3}
 .btn:hover{transform:translate(var(--magx,0),calc(var(--magy,0) - 2px))}
 .btn--brand{background:var(--brand);color:#fff;box-shadow:0 0 0 rgba(255,27,90,0)}
 .btn--brand:hover{background:#ff3a70;box-shadow:0 10px 30px -8px rgba(255,27,90,.65)}
-.btn--brand.pulse{animation:btnPulse 2.6s ease-in-out infinite}
-@keyframes btnPulse{
-  0%,100%{box-shadow:0 0 0 0 rgba(255,27,90,.45)}
-  50%{box-shadow:0 0 0 10px rgba(255,27,90,0)}
-}
 .btn--ghost{border-color:var(--ink-line);color:var(--paper)}
 .btn--ghost:hover{border-color:var(--paper)}
 .sheet--paper .btn--ghost{border-color:var(--paper-line);color:var(--ink)}
@@ -120,12 +115,7 @@ h3{font-size:clamp(19px,2.2vw,23px);letter-spacing:-.03em;line-height:1.3}
 .hdr__logo img{height:30px;width:auto}
 .js .hdr__logo img{animation:logoIn .7s var(--ease) both}
 @keyframes logoIn{from{opacity:0;transform:translateY(-8px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
-/* 살아있는 사이트라는 인상 — 제천 현지 시각을 실시간으로 보여준다 */
-.hdr__clock{
-  font-family:var(--mono);font-size:14px;font-weight:700;letter-spacing:.04em;
-  color:var(--muted-on-ink);white-space:nowrap;margin-left:8px;
-  font-variant-numeric:tabular-nums;
-}
+.hdr__clock{display:none}
 .hdr__nav{display:flex;gap:26px;margin-left:auto;font-size:15px;font-weight:600}
 .hdr__nav a{position:relative;color:var(--muted-on-ink);transition:color .18s;padding-bottom:2px}
 .hdr__nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-2px;height:2px;background:var(--brand);transition:right .28s var(--ease)}
@@ -155,43 +145,6 @@ h3{font-size:clamp(19px,2.2vw,23px);letter-spacing:-.03em;line-height:1.3}
 @keyframes drift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-3vw,4vw) scale(.9)}}
 @keyframes drift3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(2vw,-3vw) scale(1.1)}}
 
-/* 배경에 떠오르는 검색어 — 아주 옅게, 본문 가독성을 해치지 않는 선에서 */
-.hero__kw{position:absolute;inset:0;z-index:0;pointer-events:none;overflow:hidden}
-.hero__kw span{
-  position:absolute;font-family:var(--display);font-weight:800;letter-spacing:-.03em;
-  color:rgba(62,39,35,.16);white-space:nowrap;opacity:0;
-  /* 음수 딜레이 — 첫 화면부터 이미 떠 있는 중간 상태로 시작한다 */
-  animation:kwFloat var(--dur,14s) linear calc(var(--d,0s) - 12s) infinite;
-}
-.hero__kw .kw--p{color:rgba(255,27,90,.20)}
-@keyframes kwFloat{
-  0%{transform:translateY(90px);opacity:0}
-  12%{opacity:1}
-  80%{opacity:1}
-  100%{transform:translateY(-160px);opacity:0}
-}
-/* 회오리 상승 — 좌우로 감기며 올라간다 */
-@keyframes kwSwirl{
-  0%{transform:translate(0,90px) rotate(0deg);opacity:0}
-  12%{opacity:1}
-  30%{transform:translate(38px,16px) rotate(10deg)}
-  55%{transform:translate(-30px,-55px) rotate(-8deg)}
-  80%{opacity:1;transform:translate(24px,-115px) rotate(6deg)}
-  100%{transform:translate(0,-160px) rotate(0deg);opacity:0}
-}
-.hero__kw .kw--s{animation-name:kwSwirl;animation-timing-function:ease-in-out}
-/* 커서에 맞아 튕겨나가는 오프셋 — translate/rotate는 transform 애니메이션과 별개로 합성된다 */
-.hero__kw span{transition:translate .55s cubic-bezier(.18,.85,.3,1),rotate .55s cubic-bezier(.18,.85,.3,1)}
-/* 모바일 — 다 끄지 않고 6개만 (폰도 첫인상이 있어야 한다) */
-@media(max-width:760px){
-  .hero__kw span{display:none}
-  .hero__kw span:nth-child(-n+8){display:block;font-size:13px !important}
-}
-
-/* 떠다니는 플랫폼 로고 — 옅은 단색, 검색어와 같은 흐름 */
-.hero__kw .kw--logo{color:rgba(62,39,35,.22);line-height:1}
-.hero__kw .kw--logo img{opacity:.5;display:block}   /* 컬러 로고는 반투명으로 — 본문을 이기면 안 된다 */
-.hero__kw .kw--gtxt{font-family:var(--display);font-weight:800;font-size:38px}
 
 /* 맡긴다 카드 — 전화·폼 이원화 */
 .track__acts{margin-top:auto;padding-top:22px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
@@ -314,9 +267,7 @@ a.track__act:hover{border-color:var(--ink)}
 .fab:hover{background:#ff3a70}
 .fab__dot{
   width:7px;height:7px;border-radius:50%;background:#fff;flex:none;
-  animation:fabBlink 2.2s ease-in-out infinite;
 }
-@keyframes fabBlink{0%,100%{opacity:1}50%{opacity:.35}}
 @media(max-width:960px){.fab{display:none}}
 
 /* ── 시그니처: 검색 순위 카드 ── */
@@ -824,9 +775,6 @@ a.track__act:hover{border-color:var(--ink)}
   .pipe{grid-template-columns:1fr}
   .hdr__nav{display:none}
 }
-@media(max-width:520px){
-  .hdr__clock{display:none}
-}
 @media(max-width:600px){
   body{font-size:16px}
   .space{grid-template-columns:1fr}
@@ -856,9 +804,7 @@ a.track__act:hover{border-color:var(--ink)}
   .track::before{display:none}
   .pipe__pulse{display:none}
   .btn{transform:none !important}
-  .btn--brand.pulse{animation:none}
-  .hero__hint i::after,.fab__dot{animation:none}
-  .hero__kw{display:none}
+  .hero__hint i::after{animation:none}
   .hero__ch{opacity:1}
   .fab.is-on{transform:none}
   .progress{transition:none}
@@ -914,3 +860,75 @@ a.track__act:hover{border-color:var(--ink)}
   .pop__t{font-size:23px}
 }
 @media(prefers-reduced-motion:reduce){.pop__box{animation:none}}
+
+/* ─────────────────────────────────────────────
+   11/9 모션 손질 — 작은 효과 대신 스크롤로 펼쳐지는 큰 장면
+   (폰에서도 똑같이 보이도록 전부 스크롤에 묶었다. 값은 site.js가 --p로 넣는다)
+   ───────────────────────────────────────────── */
+
+/* ① 검색 순위 시연을 폰 화면 안에 */
+.rank{
+  width:min(100%,360px);margin-inline:auto;
+  border:10px solid #1C1514;border-radius:44px;padding:44px 16px 22px;
+}
+.rank::before{   /* 폰 윗부분 카메라 자리 */
+  content:"";position:absolute;top:12px;left:50%;width:84px;height:20px;margin-left:-42px;
+  border-radius:999px;background:#1C1514;
+}
+.rank__bar{border-color:#03C75A;border-width:2px}
+
+/* ② 제작 사례 — 브라우저 창 안에서 사이트가 위에서 아래로 내려간다 */
+.shot{position:relative;display:block;aspect-ratio:16/9;overflow:hidden;background:#fff}
+.shot::before{   /* 브라우저 창 윗줄 */
+  content:"";position:absolute;inset:0 0 auto;height:20px;z-index:1;
+  background:#EFECEA radial-gradient(circle,#FF6159 3px,transparent 3.5px) 12px 50%/14px 14px no-repeat;
+  box-shadow:inset 0 -1px 0 var(--paper-line);
+}
+.work .shot img{
+  aspect-ratio:auto;object-fit:fill;margin-top:20px;
+  translate:0 calc(var(--sp,0) * -79%);transition:none;
+}
+.work figure:hover .shot img{transform:none}
+
+/* ③ 한 문장 — 화면에 고정된 채 한 줄씩 채워진다 */
+.say{position:relative;height:230vh;background:var(--ink)}
+.say__pin{position:sticky;top:0;height:100vh;height:100svh;display:flex;align-items:center}
+.say__t{
+  width:100%;max-width:var(--wrap);margin:0 auto;padding:0 var(--gut);
+  font-family:var(--display);font-weight:800;letter-spacing:-.045em;line-height:1.28;
+  font-size:clamp(26px,7.4vw,84px);word-break:keep-all;color:var(--paper);
+}
+.js .say__ln{
+  --c:var(--paper);
+  background:linear-gradient(90deg,var(--c) calc(var(--f,0) * 100%),rgba(196,175,168,.22) calc(var(--f,0) * 100%));
+  -webkit-background-clip:text;background-clip:text;color:transparent;
+}
+.say__ln--b{color:var(--brand)}
+.js .say__ln--b{--c:var(--brand)}
+
+/* ④ 강의 현장 — 작은 사진이 화면 가득 커진다 */
+.scene{position:relative;height:220vh;background:var(--paper)}
+.scene__pin{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
+.scene__ph{
+  position:absolute;inset:0;margin:0;
+  clip-path:inset(calc((1 - var(--p,1)) * 16%) calc((1 - var(--p,1)) * 18%) round calc((1 - var(--p,1)) * 28px));
+}
+.scene__ph img{
+  width:100%;height:100%;object-fit:cover;
+  transform:scale(calc(1.18 - var(--p,1) * .18));
+}
+.scene__ph::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(28,21,20,.78),rgba(28,21,20,0) 55%)}
+.scene__cap{
+  position:absolute;left:0;right:0;bottom:0;z-index:1;
+  max-width:var(--wrap);margin:0 auto;padding:0 var(--gut) clamp(40px,8vh,84px);color:#fff;
+  opacity:var(--cap,1);translate:0 calc((1 - var(--cap,1)) * 24px);
+}
+.scene__cap span{display:block;font-size:14px;font-weight:700;letter-spacing:.02em;color:#FFC2D3;margin-bottom:10px}
+.scene__cap b{display:block;font-family:var(--display);font-weight:800;letter-spacing:-.04em;line-height:1.2;font-size:clamp(30px,5.4vw,64px);word-break:keep-all}
+
+@media(prefers-reduced-motion:reduce){
+  .say,.scene{height:auto}
+  .say__pin,.scene__pin{position:relative;height:auto;padding:var(--sec-y) 0}
+  .scene__pin{height:80vh}
+  .js .say__ln{--f:1}
+}
