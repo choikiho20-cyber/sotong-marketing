@@ -1,5 +1,24 @@
 [
   {
+    "id": 23,
+    "title": "소통마케팅센터 - 클로드 코드에서 GPT로 검사 받는 법 총정리",
+    "date": "2026-11-12",
+    "tags": [
+      "클로드코드",
+      "챗GPT검사",
+      "OpenAI코덱스",
+      "Codex플러그인",
+      "AI코드검수",
+      "제천마케팅교육",
+      "AI정복하기",
+      "소통마케팅센터",
+      "1인사업자AI",
+      "로컬비즈니스AI활용"
+    ],
+    "summary": "OpenAI가 2026년 3월 31일 공식 공개한 플러그인 codex-plugin-cc를 쓰면, 클로드 코드가 만든 결과물을 챗GPT(Codex)가 대신 검사해 줍니다.",
+    "content": "<p><img src=\"/images/posts/23_1.jpg\" alt=\"소통마케팅센터 - 클로드 코드에서 GPT로 검사 받는 법 총정리 대표 사진\" loading=\"lazy\"></p>\n<p>OpenAI가 2026년 3월 31일 공식 공개한 플러그인 codex-plugin-cc를 쓰면, 클로드 코드가 만든 결과물을 챗GPT(Codex)가 대신 검사해 줍니다. 필요한 건 클로드 코드 유료 구독, ChatGPT 계정(무료도 가능), Node.js 18.18 이상이 전부고 추가 비용은 없습니다.</p>\n<p>다만 윈도우에서는 기본 검사 명령이 그대로 막히는 지점이 있어서 우회 방법까지 정리해 드립니다.</p>\n<h2>클로드와 GPT를 같이 쓰면 뭐가 달라지나요?</h2>\n<p>한 AI가 만든 걸 같은 AI가 다시 검사하면 놓친 부분을 또 놓치는 경우가 많습니다. 그래서 역할을 이렇게 나눕니다.</p>\n<ol><li>만들기 — 클로드 코드가 담당</li><li>검사 — GPT가 읽기만 하고 지적</li><li>마무리 — 클로드가 고치거나, 지적이 틀리면 반박</li></ol>\n<p>여기서 말하는 클로드는 채팅용이 아니라 코드·파일 작업용 클로드 코드입니다. 홈페이지나 자동화 프로그램처럼 파일을 직접 만드는 작업을 검사할 때 쓰는 연결입니다.</p>\n<h2>설치는 어떻게 하나요?</h2>\n<p>터미널과 클로드 코드를 오가며 다섯 단계만 거치면 끝입니다.</p>\n<ol><li>node -v로 버전 확인 (18.18 이상)</li><li>npm install -g @openai/codex 실행</li><li>클로드 코드에서 /plugin marketplace add openai/codex-plugin-cc 입력</li><li>/plugin install codex@openai-codex 후 /reload-plugins</li><li>codex login으로 ChatGPT 로그인, codex login status로 연결 확인</li></ol>\n<p>설치가 끝나면 클로드 코드에서 쓰는 명령은 /codex:review(검토), /codex:adversarial-review(깐깐한 검토), /codex:rescue(막힌 작업 요청) 세 가지입니다. 실제로 ChatGPT 무료 계정으로 로그인해 검사까지 문제없이 진행됐습니다.</p>\n<h2>실제로 검사를 시켜보니 어땠나요?</h2>\n<p>가상의 빵집 페이지를 만들어 예약 폼을 검사시킨 결과, 1차 검사에서 문제 4개가 나왔습니다.</p>\n<ol><li>예약 문의가 어디에도 전송되지 않는데 \"접수됐어요\"로 표시</li><li>입력값이 코드로 실행될 수 있는 보안 허점</li><li>20시 마감인데 20시 59분까지 영업 중으로 표시</li><li>지난 날짜로도 예약이 들어가는 오류</li></ol>\n<p>클로드가 4개를 전부 수정했고, 2차 검사에서 나온 작은 문제 3개도 이어서 수정했습니다. 3차 검사에서는 GPT가 \"줄바꿈 표시 문제\"를 지적했지만, 해당 입력칸은 애초에 줄바꿈이 불가능한 구조라 클로드가 근거를 들어 반박하고 통과 판정을 받았습니다.</p>\n<p>한쪽 지적을 무조건 따르지 않고 서로 근거로 점검하는 구조라는 점이 확인됐습니다.</p>\n<h2>윈도우에서 막히는 지점은 어디인가요?</h2>\n<p>윈도우에서는 /codex:review 실행 시 보안 장치에 막혀 GPT가 파일을 못 읽고 \"검사할 게 없다\"로 끝나는 경우가 있습니다. 이럴 땐 파일을 직접 읽히지 말고, 바뀐 내용(git diff)을 텍스트로 정리해 직접 전달하면 됩니다.</p>\n<p>codex exec --skip-git-repo-check -s read-only 명령으로 읽기 전용 검사를 요청하면 역할 분담이 그대로 지켜집니다. 클로드에게 \"윈도우라 diff를 붙여서 보내 줘\"라고 말로 요청하면 클로드가 알아서 처리해 줍니다.</p>\n<h2>자주 묻는 질문</h2>\n<ol><li><strong>챗GPT 유료 계정이 없어도 되나요?</strong><br>네, 무료 계정으로 로그인해 실제 검사까지 진행됩니다. 다만 사용량 한도는 있습니다.</li><li><strong>코딩을 몰라도 쓸 수 있나요?</strong><br>설치 명령 몇 줄만 따라 치면 되고, 이후에는 클로드에게 말로 검사를 요청하면 됩니다.</li><li><strong>맥에서도 윈도우처럼 막히나요?</strong><br>직접 확인한 환경은 윈도우뿐이라 맥은 단정해 말씀드리기 어렵습니다.</li></ol>\n<p>AI 도구는 자영업 현장에서도 빠르게 자리잡고 있지만, 직접 설치하고 검증하기까지는 시행착오가 따릅니다. 소통마케팅센터는 이런 AI 도구를 사장님이 직접 다룰 수 있도록 AI 정복하기 기초반(120,000원), 심화반(240,000원), AI지도사 자격증반(360,000원)을 운영하고 있습니다.</p>\n<p>대행을 맡기기보다 직접 운영 능력을 키우고 싶은 제천, 단양, 영월, 원주 지역 사장님들이 주로 찾는 과정입니다. 한 줄 요약: 클로드가 만들고 GPT가 검사하는 구조는 이미 쓰는 구독만으로 가능하며, 윈도우에서는 변경 내용을 직접 전달하는 방식으로 우회하면 됩니다.</p><p style=\"margin:22px 0 8px;font-weight:bold;font-size:1.05em;\">소통마케팅센터 이용 안내</p><table style=\"width:100%;border-collapse:collapse;\"><tr><th style=\"width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;\">주소</th><td style=\"padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);\">충북 제천시 하소로 20 2층</td></tr><tr><th style=\"width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;\">영업시간</th><td style=\"padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);\">10:00~22:00</td></tr><tr><th style=\"width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;\">주차</th><td style=\"padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);\">가능</td></tr><tr><th style=\"width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;\">전화</th><td style=\"padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);\"><a href=\"tel:0436515662\" style=\"color:#1a73e8;\">043-651-5662</a></td></tr><tr><th style=\"width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;\">홈페이지</th><td style=\"padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);\"><a href=\"https://sotongmk.com/\" target=\"_blank\" rel=\"noopener\" style=\"color:#1a73e8;\">sotongmk.com</a></td></tr></table>"
+  },
+  {
     "id": 22,
     "title": "소통마케팅센터의 당근 광고 홈페이지 연결하는 법 | 웹사이트 광고 7단계",
     "date": "2026-11-11",
