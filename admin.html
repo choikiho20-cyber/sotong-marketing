@@ -346,7 +346,7 @@ function renderHero(html,{lines,mark,lede}){
 }
 
 function parseBand(html){
-  const inner=getMk(html,'band'), v=(html.match(/var B="([^"]*)";/)||[])[1];
+  const inner=getMk(html,'band'), v=(html.match(/<meta name="band-v" content="([^"]*)">/)||[])[1];
   const href=(inner.match(/href="([^"]*)"/)||[])[1]||'', b=inner.match(/<b>([\s\S]*?)<\/b>/);
   const text=plain(inner.replace(/<b>[\s\S]*?<\/b>/,'').replace(/<span class="arw"[\s\S]*?<\/span>/,''));
   return {on:!!v, text, bold:b?plain(b[1]):'', href:unesc(href)};
@@ -356,8 +356,8 @@ function renderBand(html,{on,text,bold,href},ver){
   const body=escA(text)+(bold?' <b>'+escA(bold)+'</b>':'');
   const inner=href?'<a class="band__go" href="'+escA(href)+'">'+body+' <span class="arw" aria-hidden="true">&rarr;</span></a>'
                   :'<span class="band__go">'+body+'</span>';
-  if(!/var B="[^"]*";/.test(html)||!/<aside class="band" data-v="[^"]*"/.test(html)) throw new Error('공지 띠 표식을 찾지 못했습니다');
-  return setMk(html,'band',inner).replace(/var B="[^"]*";/,()=>'var B="'+v+'";').replace(/(<aside class="band" data-v=")[^"]*"/,(m,a)=>a+v+'"');
+  if(!/<meta name="band-v" content="[^"]*">/.test(html)||!/<aside class="band" data-v="[^"]*"/.test(html)) throw new Error('공지 띠 표식을 찾지 못했습니다');
+  return setMk(html,'band',inner).replace(/<meta name="band-v" content="[^"]*">/,()=>'<meta name="band-v" content="'+v+'">').replace(/(<aside class="band" data-v=")[^"]*"/,(m,a)=>a+v+'"');
 }
 
 function parseFaq(html){
