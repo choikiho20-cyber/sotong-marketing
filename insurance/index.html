@@ -26,8 +26,9 @@
 <meta name="theme-color" content="#3E2723">
 <link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
 <script>document.documentElement.className+=" js"</script>
-<link rel="stylesheet" href="/assets/css/site.css?v=20261108a">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261119a">
 <script defer src="/assets/js/site.js?v=20261108a"></script>
+<script defer src="/assets/js/insurance-ad.js?v=20261119a"></script>
 <script type="application/ld+json">
 {
  "@context": "https://schema.org",
@@ -35,10 +36,10 @@
   {
    "@type": "Service",
    "name": "보험설계사 개인 홈페이지",
-   "description": "설계사 이름으로 검색되는 개인 홈페이지 제작과 AI 글쓰기(글해줌) 매달 4편을 네이버 블로그, 티스토리, 홈페이지, 인스타그램, 유튜브, 스레드 6개 채널로 발행하는 일, 준법감시 제출용 자료 묶음, 홈페이지 관리를 함께 제공하는 서비스입니다.",
+   "description": "설계사 이름으로 검색되는 개인 홈페이지 제작과 AI 글쓰기(글해줌) 매달 4편을 네이버 블로그, 티스토리, 홈페이지, 인스타그램, 유튜브, 스레드 6개 채널로 발행하는 일, 준법감시 제출용 자료 묶음, 상품 자료로 고객용 설명 PPT·영상 초안을 만드는 설계사 업무 도구, 홈페이지 관리를 함께 제공하는 서비스입니다.",
    "url": "https://sotongmk.com/insurance/",
    "serviceType": "보험설계사 개인 홈페이지 제작 및 콘텐츠 발행",
-   "dateModified": "2026-11-02",
+   "dateModified": "2026-11-19",
    "inLanguage": "ko-KR",
    "areaServed": "대한민국",
    "provider": {
@@ -109,6 +110,14 @@
      "acceptedAnswer": {
       "@type": "Answer",
       "text": "심의 통과를 약속드리지는 않습니다. 대신 걸리기 쉬운 표현을 먼저 걸러 주는 도구를 넣어 드립니다. 최종 책임과 심의 절차는 설계사님과 소속사 기준을 따릅니다."
+     }
+    },
+    {
+     "@type": "Question",
+     "name": "업무 도구로 만든 PPT를 고객에게 바로 써도 되나요?",
+     "acceptedAnswer": {
+      "@type": "Answer",
+      "text": "아니요. 업무 도구가 만드는 것은 초안이고 PPT에 「준법감시 심의 전」 표시가 붙습니다. 고객에게 보여 드리기 전에 소속사 준법감시 심의를 꼭 거치셔야 하며, 심의 통과를 약속드리지는 않습니다."
      }
     },
     {
@@ -193,13 +202,14 @@
   <section class="sheet sheet--ink blogpage">
     <div class="wrap wrap--narrow">
       <p class="eyebrow">보험설계사 전용</p>
-      <h1>보험설계사 홈페이지 제작<br>설계사님 이름으로 검색되는 내 홈페이지</h1>
+      <!-- 광고별 제목: /insurance/?a=ppt|db|fit|edu 로 들어오면 /assets/js/insurance-ad.js 가 이 h1 과 아래 첫 문장(data-ad-sub)만 바꾼다. 꼬리표 없으면 이대로 -->
+      <h1 data-ad-h1>보험설계사 홈페이지 제작<br>설계사님 이름으로 검색되는 내 홈페이지</h1>
       <video src="https://sotong-proposal.pages.dev/v/sotong_v8s.mp4" poster="https://sotong-proposal.pages.dev/v/poster.jpg?v8s"
              controls playsinline preload="metadata" fetchpriority="high" width="1080" height="1920"
              style="display:block;width:auto;max-width:100%;height:min(72vh,640px);aspect-ratio:9/16;margin:24px auto;border-radius:14px;background:#000"
              aria-label="보험설계사 홈페이지 1분 설명 영상"></video>
       <p class="lede muted">
-        <b style="color:#fff">전국 어디서나 비대면</b>으로 제작합니다. 상담·자료 전달·검수가 모두 온라인이라 지역 제한이 없습니다.
+        <span data-ad-sub><b style="color:#fff">전국 어디서나 비대면</b>으로 제작합니다.</span> 상담·자료 전달·검수가 모두 온라인이라 지역 제한이 없습니다.
         명함에는 소속사 이름만 있습니다. 고객이 설계사님 이름을 검색했을 때 나와야 하는 건 설계사님의 홈페이지입니다.
         거기에 <b style="color:#fff">글 4편이 6개 채널로, 매달 최대 24개 게시물</b>이 쌓입니다.
       </p>
@@ -223,6 +233,82 @@
         <li><b>검색에 잡히는 구조.</b> 구글·네이버·빙 등록과 AI가 읽어가는 파일까지 붙여 드립니다</li>
         <li><b>준법감시 제출용 묶음.</b> 올리기 전에 걸리기 쉬운 표현을 먼저 거르고, 카드뉴스·발행문구·점검표를 한 번에 내려받아 소속사 준법감시에 제출하실 수 있습니다</li>
       </ul>
+    </div>
+  </section>
+
+  <!-- ── 설계사 업무 도구 ───────────────────── -->
+  <section class="sheet sheet--ink" id="tools">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <p class="eyebrow">설계사 업무 도구</p>
+        <h2>설계사 업무 도구는<br>무엇을 해 주나요?</h2>
+        <p class="lede muted">
+          홈페이지 안에 비밀번호로 잠긴 업무 도구가 있습니다. 상품요약서·가입설계서·교육자료를 넣으면
+          고객에게 보여 드릴 설명 PPT와 영상의 <b style="color:#fff">초안</b>을 만듭니다.
+          AI는 자료에 적힌 내용을 옮겨 적기만 하고, 계산하거나 지어내지 않습니다.
+        </p>
+      </div>
+
+      <div class="svc">
+        <div class="svc__grp rv">
+          <p class="track__k">01 · 자료 넣기</p>
+          <h3>가진 자료를 그대로 넣습니다</h3>
+          <p>상품요약서·가입설계서·교육자료 PDF와 사진, 직접 쓰신 글까지 넣을 수 있습니다. 폴더째 끌어다 놓아도 됩니다.</p>
+        </div>
+        <div class="svc__grp rv" data-d="1">
+          <p class="track__k">02 · AI 상품 분석</p>
+          <h3>숫자는 옮겨 적고, 쪽수를 붙입니다</h3>
+          <p>자료에 적힌 숫자를 그대로 옮기고 몇 쪽에서 가져왔는지 표시합니다. AI는 옮겨 적기만 하고 계산이나 창작은 하지 않습니다.</p>
+        </div>
+        <div class="svc__grp rv">
+          <p class="track__k">03 · 하나하나 확인</p>
+          <h3>원본 쪽을 옆에 띄워 대조합니다</h3>
+          <p>옮겨 적은 내용을 원본 쪽 옆에 띄워 놓고 하나씩 확인합니다. 이 단계는 건너뛸 수 없고, 누가 언제 무엇을 확인했는지 기록으로 내려받으실 수 있습니다.</p>
+        </div>
+        <div class="svc__grp rv" data-d="1">
+          <p class="track__k">04 · 금소법 자동 점검</p>
+          <h3>걸리는 표현이 있으면 PPT를 막습니다</h3>
+          <p>금지 표현과 빠진 안내 문구를 찾아 알려 드립니다. 고치지 않은 곳이 남아 있으면 PPT가 만들어지지 않습니다.</p>
+        </div>
+        <div class="svc__grp rv">
+          <p class="track__k">05 · 설명 PPT · 영상</p>
+          <h3>고객용 설명 PPT와 영상 초안</h3>
+          <p>PPT에는 「준법감시 심의 전」 표시가 붙고, 태블릿 화면으로 바로 보여 드릴 수 있습니다. 목소리를 골라 설명 영상(mp4)도 만듭니다.</p>
+        </div>
+        <div class="svc__grp rv" data-d="1">
+          <p class="track__k">06 · 상품 서랍</p>
+          <h3>고객 조건으로 상품부터 찾습니다</h3>
+          <p>설계사들이 확인한 상품이 서랍에 쌓입니다. 고객 나이와 유병자 조건(간편·무심사)으로 가입할 수 있는 상품을 찾고, 고른 상품으로 바로 PPT를 만듭니다.</p>
+        </div>
+        <div class="svc__grp rv">
+          <p class="track__k">07 · 광고용 한 장 페이지</p>
+          <h3>광고마다 따로 여는 페이지</h3>
+          <p>「보험금 청구 도움」(청구 기한 계산기 포함)과 「담당 설계사가 그만두셨나요」 페이지가 들어 있습니다. 주소 끝에 ?a=당근1 같은 꼬리표를 붙이면 어느 광고로 온 문의인지 문의 문자에 찍힙니다.</p>
+        </div>
+        <div class="svc__grp rv" data-d="1">
+          <p class="track__k">08 · 셀프 관리 화면</p>
+          <h3>홈페이지는 설계사님이 직접 고칩니다</h3>
+          <p>비밀번호 하나로 블로그 글·사진·첫 화면·공지·연락처·자주 묻는 질문·광고 페이지 문구를 고치실 수 있습니다. 보험 광고 금지 표현은 저장하기 전에 막힙니다.</p>
+        </div>
+      </div>
+
+      <div class="creed rv">
+        <p><b>현장 이야기</b> — 통계가 아니라 어떤 GA 교육실장님께 들은 이야기입니다. 설계사님들이 고객 DB를 자기 돈으로 사는데, 만남이 확정된 건은 1건에 약 22만 원, 명단만은 약 7만 원이라고 합니다.</p>
+        <p>고객이 설계사님 이름을 검색해서 먼저 연락해 오는 길을 하나 더 만들어 두자는 것이 이 홈페이지와 업무 도구입니다.</p>
+      </div>
+
+      <p class="lede muted rv">
+        도구가 만드는 것은 <b style="color:#fff">초안</b>입니다. 고객에게 보여 드리는 자료는 반드시 소속사 준법감시 심의를 거쳐 주세요.
+        심의 통과를 약속드리지는 않으며, 상품 서랍의 가입 조건도 소속사·보험사 기준으로 한 번 더 확인하셔야 합니다.
+      </p>
+      <!-- 도구 가격 문구: 대표님 결정 전 임시 -->
+      <p class="lede rv" id="tools-price"><b style="color:#fff">설계사 업무 도구는 홈페이지에 함께 들어갑니다.</b></p>
+
+      <div class="hero__cta" style="animation:none;opacity:1">
+        <a class="btn btn--brand" href="https://boheom-sample.pages.dev/tools/product/?demo" target="_blank" rel="noopener" data-magnetic>업무 도구 체험하기 <span class="arw" aria-hidden="true">&rarr;</span></a>
+        <a class="btn btn--ghost" href="https://boheom-sample.pages.dev/admin" target="_blank" rel="noopener">관리 화면 둘러보기</a>
+      </div>
+      <p class="muted" style="font-size:14px;margin:14px 0 0">체험판은 비밀번호 없이 열리는 견본입니다.</p>
     </div>
   </section>
 
@@ -319,6 +405,13 @@
           </div>
         </details>
         <details class="faq__item">
+          <summary>업무 도구로 만든 PPT를 고객에게 바로 써도 되나요?</summary>
+          <div class="faq__a">
+            아니요. 업무 도구가 만드는 것은 <b>초안</b>이고 PPT에 「준법감시 심의 전」 표시가 붙습니다.
+            고객에게 보여 드리기 전에 소속사 준법감시 심의를 꼭 거치셔야 하며, 심의 통과를 약속드리지는 않습니다.
+          </div>
+        </details>
+        <details class="faq__item">
           <summary>상품 추천이나 수익률도 올릴 수 있나요?</summary>
           <div class="faq__a">
             올리지 않습니다. 특정 상품 추천과 수익률 표현은 다루지 않습니다.
@@ -368,6 +461,7 @@
         <p class="lede muted">
           카카오톡이나 네이버 톡톡으로 "보험 홈페이지" 한 줄만 보내 주셔도 됩니다. 문자·전화도 괜찮습니다.
         </p>
+        <p class="muted" data-ad-note hidden></p>
         <div class="final__ways">
           <a href="https://pf.kakao.com/_hiwxfn/chat" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3C6.5 3 2 6.5 2 10.8c0 2.7 1.8 5.1 4.5 6.5L5.6 21l4-2.6c.8.1 1.6.2 2.4.2 5.5 0 10-3.5 10-7.8S17.5 3 12 3z" fill="#FEE500"/></svg> 카카오톡 상담</a>
           <a href="https://naver.me/513bzt6C" target="_blank" rel="noopener"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><rect width="24" height="24" rx="5" fill="#03C75A"/><path d="M7.5 7h3l3 4.7V7h3v10h-3l-3-4.7V17h-3z" fill="#fff"/></svg> 네이버 톡톡</a>
@@ -401,7 +495,7 @@
   <div class="wrap ftr__legal">
     <p>상호 <b>소통마케팅센터</b> · 대표 최기호 · 사업자등록번호 790-23-02129 · 통신판매업 신고 제2025-충북제천-0080호</p>
     <p>충청북도 제천시 하소로 20, 2층 (하소동) · 010-2468-5662 · <a href="mailto:choikiho20@gmail.com">choikiho20@gmail.com</a></p>
-    <p>보험설계사 홈페이지에 게시되는 광고물의 광고 주체와 심의 책임은 설계사 본인 및 소속 보험사·대리점에 있으며, 소통마케팅센터는 제작·게시 도구를 제공합니다. · 최종 수정 2026-11-04</p>
+    <p>보험설계사 홈페이지에 게시되는 광고물의 광고 주체와 심의 책임은 설계사 본인 및 소속 보험사·대리점에 있으며, 소통마케팅센터는 제작·게시 도구를 제공합니다. · 최종 수정 2026-11-19</p>
   </div>
 </footer>
 

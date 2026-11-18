@@ -591,6 +591,8 @@ a.track__act:hover{border-color:var(--ink)}
 }
 .creed p{margin:0 0 16px}
 .creed b{color:var(--ink)}
+.sheet--ink .creed{color:var(--muted-on-ink);margin-top:clamp(40px,5vw,56px)}
+.sheet--ink .creed b{color:#fff}
 
 /* ── 자주 묻는 질문 ── */
 .faq__list{border-top:1px solid var(--paper-line)}
