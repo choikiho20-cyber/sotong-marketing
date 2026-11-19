@@ -9,20 +9,22 @@ on:
 concurrency:
   group: deploy
   cancel-in-progress: true
+permissions:
+  contents: read
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
       CF: ${{ secrets.CLOUDFLARE_API_TOKEN }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - name: 올릴 파일만 dist 로 (저장소 설정 파일 제외)
         run: |
           mkdir dist
           git ls-files -z | grep -zv -e '^\.github/' -e '^\.gitignore$' -e '^CNAME$' | xargs -0 cp --parents -t dist
       - name: Cloudflare Pages 에 올리기
         if: env.CF != ''
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: c8d100b95847dffe1bc07b1625b4ee5d
