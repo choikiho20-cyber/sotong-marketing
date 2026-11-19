@@ -24,10 +24,10 @@ jobs:
           git ls-files -z | grep -zv -e '^\.github/' -e '^\.gitignore$' -e '^CNAME$' | xargs -0 cp --parents -t dist
       - name: Cloudflare Pages 에 올리기
         if: env.CF != ''
-        uses: cloudflare/wrangler-action@9acf94ace14e7dc412b076f2c5c20b8ce93c79cd # v3
-        with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: c8d100b95847dffe1bc07b1625b4ee5d
-          command: pages deploy dist --project-name=sotong-marketing --branch=main --commit-dirty=true
+        # 바깥 액션 대신 wrangler 를 판 고정으로 직접 실행(11/19 wrangler-action 이 npm 확인 단계에서 실패)
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: c8d100b95847dffe1bc07b1625b4ee5d
+        run: npx --yes wrangler@4.165.0 pages deploy dist --project-name=sotong-marketing --branch=main --commit-dirty=true
       - if: env.CF == ''
         run: echo "::warning::CLOUDFLARE_API_TOKEN 비밀이 없어 올리지 않았습니다."
