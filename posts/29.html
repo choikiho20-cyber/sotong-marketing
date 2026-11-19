@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-525KXEG5EH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-525KXEG5EH');
+</script>
+<title>무료 호스팅에 올린 회사 홈페이지, 무엇이 문제일까 — 우리 홈페이지를 직접 옮긴 기록</title>
+<meta name="description" content="우리 회사 홈페이지가 계획과 달리 무료 진열장(GitHub Pages)에서 바로 나가고 있었습니다. 판매 페이지가 붙은 사이트를 무료 진열장에 두면 약관 위험과 보안 등급 문제가 생깁니다. 그래서 하루 만에 Cloudflare Pages로 옮겼습니다. 이 글은 그 과정">
+<meta name="keywords" content="홈페이지호스팅, GitHubPages, CloudflarePages, 홈페이지보안, 네임서버변경">
+<link rel="canonical" href="https://sotongmk.com/posts/29.html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="무료 호스팅에 올린 회사 홈페이지, 무엇이 문제일까 — 우리 홈페이지를 직접 옮긴 기록">
+<meta property="og:description" content="우리 회사 홈페이지가 계획과 달리 무료 진열장(GitHub Pages)에서 바로 나가고 있었습니다. 판매 페이지가 붙은 사이트를 무료 진열장에 두면 약관 위험과 보안 등급 문제가 생깁니다. 그래서 하루 만에 Cloudflare Pages로 옮겼습니다. 이 글은 그 과정">
+<meta property="og:url" content="https://sotongmk.com/posts/29.html">
+<meta property="og:image" content="https://sotongmk.com/images/posts/29_1.jpg">
+<meta property="og:image:width" content="1600">
+<meta property="og:image:height" content="900">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:locale" content="ko_KR">
+<meta property="article:published_time" content="2026-11-19">
+<meta name="theme-color" content="#3E2723">
+<link rel="icon" href="/assets/img/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/assets/css/site.css?v=20261108a">
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "무료 호스팅에 올린 회사 홈페이지, 무엇이 문제일까 — 우리 홈페이지를 직접 옮긴 기록", "description": "우리 회사 홈페이지가 계획과 달리 무료 진열장(GitHub Pages)에서 바로 나가고 있었습니다. 판매 페이지가 붙은 사이트를 무료 진열장에 두면 약관 위험과 보안 등급 문제가 생깁니다. 그래서 하루 만에 Cloudflare Pages로 옮겼습니다. 이 글은 그 과정", "datePublished": "2026-11-19", "dateModified": "2026-11-19", "keywords": "홈페이지호스팅, GitHubPages, CloudflarePages, 홈페이지보안, 네임서버변경", "author": {"@type": "Organization", "name": "소통마케팅센터"}, "publisher": {"@type": "Organization", "name": "소통마케팅센터"}, "mainEntityOfPage": "https://sotongmk.com/posts/29.html", "image": "https://sotongmk.com/images/posts/29_1.jpg"}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "홈", "item": "https://sotongmk.com/"}, {"@type": "ListItem", "position": 2, "name": "블로그", "item": "https://sotongmk.com/blog.html"}, {"@type": "ListItem", "position": 3, "name": "무료 호스팅에 올린 회사 홈페이지, 무엇이 문제일까 — 우리 홈페이지를 직접 옮긴 기록", "item": "https://sotongmk.com/posts/29.html"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "GitHub Pages가 뭔가요?", "acceptedAnswer": {"@type": "Answer", "text": "GitHub(개발자들이 코드를 보관하는 서비스)가 무료로 제공하는 홈페이지 진열 기능입니다. 저장소에 파일을 올리면 바로 홈페이지로 보여 줍니다."}}, {"@type": "Question", "name": "이사하는 동안 홈페이지가 멈추나요?", "acceptedAnswer": {"@type": "Answer", "text": "대부분의 시간은 멈추지 않습니다. 새 진열장을 먼저 완성해 두고 안내소만 마지막에 바꾸기 때문입니다. 다만 안내소를 바꾼 직후 몇 분은 일부 방문자에게 보안 연결 오류가 보일 수 있습니다."}}, {"@type": "Question", "name": "비용이 드나요?", "acceptedAnswer": {"@type": "Answer", "text": "이번 이사에서 추가 비용은 없었습니다. Cloudflare 무료 요금제를 썼고, 도메인은 원래 등록한 곳(가비아)에 그대로 두었습니다."}}]}</script>
+</head>
+<body>
+
+<div class="progress" data-progress aria-hidden="true"></div>
+
+<header class="hdr">
+  <div class="wrap hdr__in">
+    <a class="hdr__logo" href="/" aria-label="소통마케팅센터 홈">
+      <img src="/assets/img/logo-wordmark-brown.png" alt="소통마케팅센터" width="760" height="301">
+    </a>
+    <span class="hdr__clock" data-clock aria-hidden="true">— --:--</span>
+    <nav class="hdr__nav" aria-label="주요 메뉴">
+      <a href="/#tracks">서비스</a>
+      <a href="/#services">전체 업무</a>
+      <a href="/#geulhaejum">글해줌</a>
+      <a href="/blog.html">블로그</a>
+      <a href="/#faq">자주 묻는 질문</a>
+    </nav>
+    <a class="btn btn--brand hdr__cta" href="/#contact" data-magnetic>무료 진단 받기</a>
+  </div>
+</header>
+
+<main>
+  <article class="sheet sheet--ink blogpost">
+    <div class="wrap wrap--narrow">
+      <a class="blogpost__back" href="/blog.html">← 블로그 목록</a>
+      <h1>무료 호스팅에 올린 회사 홈페이지, 무엇이 문제일까 — 우리 홈페이지를 직접 옮긴 기록</h1>
+      <div class="blog-post-meta">2026-11-19 · 소통마케팅센터</div>
+      <div class="blog-card-tags"><span class="blog-tag">#홈페이지호스팅</span><span class="blog-tag">#GitHubPages</span><span class="blog-tag">#CloudflarePages</span><span class="blog-tag">#홈페이지보안</span><span class="blog-tag">#네임서버변경</span><span class="blog-tag">#홈페이지이사</span><span class="blog-tag">#소통마케팅센터</span><span class="blog-tag">#제천홈페이지제작</span></div>
+
+      <div class="blog-post-content">
+<p><img src="/images/posts/29_1.jpg" alt="무료 호스팅에 올린 회사 홈페이지, 무엇이 문제일까 — 우리 홈페이지를 직접 옮긴 기록 대표 사진" loading="lazy"></p>
+<p>우리 회사 홈페이지가 계획과 달리 무료 진열장(GitHub Pages)에서 바로 나가고 있었습니다. 판매 페이지가 붙은 사이트를 무료 진열장에 두면 약관 위험과 보안 등급 문제가 생깁니다. 그래서 하루 만에 Cloudflare Pages로 옮겼습니다. 이 글은 그 과정에서 겪은 문제·고민·해결을 순서대로 적은 기록입니다.</p>
+<blockquote><p>이 글은 우리 회사 사이트(sotongmk.com)를 옮기며 실제로 확인한 내용만 담았습니다. 화면 사진의 계정 정보와 열쇠(토큰) 값은 가렸습니다.</p></blockquote>
+<h2>1. 무엇을 발견했나요?</h2>
+<p>판매 페이지를 손보다가 보안 점검을 돌렸는데, 보안 항목에서 FAIL이 6건 나왔습니다. 원인을 따라가 보니 <strong>홈페이지가 어디서 보이고 있는지</strong>가 계획과 달랐습니다.</p>
+<ul><li><strong>8월에 만든 계획서:</strong> 글·사진 파일은 GitHub 저장소(창고)에 두고, 손님에게 보여 주는 일은 우리 서버(진열장)가 1분마다 파일을 가져와서 한다.</li><li><strong>11월 19일에 확인한 실제:</strong> 홈페이지 응답 머리글이 <code>Server: GitHub.com</code>이었고, 주소도 GitHub Pages 서버를 가리키고 있었습니다. <strong>창고가 진열장 노릇까지 하고 있었던 것</strong>입니다.</li></ul>
+<p>손님 눈에는 아무 차이가 없었습니다. 사이트는 잘 열렸고, 글도 잘 올라갔습니다. 그래서 몇 달 동안 아무도 몰랐습니다.</p>
+<h2>2. 겉으로 멀쩡한데 왜 문제인가요?</h2>
+<p>문제는 세 가지였습니다.</p>
+<h3>① 약관: 무료 진열장은 사업 운영용이 아닙니다</h3>
+<p>GitHub Pages 공식 문서의 「사용 한도」 항목에는, 온라인 사업이나 전자상거래, 상업 거래를 위한 <strong>무료 웹 호스팅으로 쓰는 것을 허용하지 않는다</strong>고 적혀 있습니다. 같은 문서는 비밀번호나 카드 번호 같은 민감한 거래에도 쓰지 말라고 안내합니다.</p>
+<p>우리 사이트에는 강의 판매, 서비스 판매 페이지, 광고 랜딩이 붙어 있었습니다.</p>
+<h3>② 연쇄 정지: 한 계정에 여러 사이트가 묶여 있습니다</h3>
+<p>홈페이지 제작사는 보통 계정 하나에 여러 사이트를 올립니다. 그 계정이 약관 문제로 멈추면 <strong>판매 기능이 없는 다른 사이트까지 같이 내려갈 수 있습니다.</strong> 한 사이트 때문에 전부가 멈추는 구조는 피해야 합니다.</p>
+<p><img src="/images/posts/29_2.jpg" alt="한 계정에 묶인 사이트들" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">한 계정에 묶인 사이트들</p>
+<h3>③ 보안 등급: 무료 진열장은 보안 머리글을 못 붙입니다</h3>
+<p>보안 머리글은 브라우저에게 「이 사이트에서는 우리 파일 말고 다른 스크립트는 실행하지 마라」, 「다른 사이트 안에 끼워 넣지 마라」 같은 규칙을 알려 주는 장치입니다. GitHub Pages에서는 이 머리글을 직접 붙일 방법이 없어서, 보안 점검에서 높은 등급이 나오지 않습니다. 우리는 모든 홈페이지를 보안 A+로 만든다는 원칙이 있었는데, 정작 우리 사이트가 그 기준에 못 미쳤습니다.</p>
+<h2>3. 어떤 선택지를 고민했나요?</h2>
+<table style="width:100%;border-collapse:collapse;"><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;"></th><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">A. 원래 계획대로 우리 서버</th><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">B. Cloudflare Pages로 이사</th></tr><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">보안 A+</th><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">서버 설정으로 가능</td><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">파일 하나(_headers)로 가능</td></tr><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">추가 비용</th><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">없음</td><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">없음(무료 요금제)</td></tr><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">걱정되는 점</th><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">다른 서비스가 같은 서버를 써서, 서버가 멈추면 홈페이지도 같이 멈춤</td><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">이사 과정에서 사장님(계정 주인) 손이 몇 번 필요</td></tr><tr><th style="width:26%;padding:10px 12px;text-align:left;background:rgba(127,127,127,.12);color:inherit;border:1px solid rgba(127,127,127,.35);font-weight:600;">글 자동 발행</th><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">그대로</td><td style="padding:10px 12px;color:inherit;border:1px solid rgba(127,127,127,.35);">그대로(창고는 GitHub 유지)</td></tr></table>
+<p><strong>B를 골랐습니다.</strong> 이미 다른 견본 사이트 여러 곳이 같은 방식으로 A+를 받고 있어 검증된 길이었고, 홈페이지가 다른 서비스와 운명을 같이하지 않게 할 수 있었습니다.</p>
+<p>핵심은 <strong>창고와 진열장을 분리</strong>하는 것입니다. 글을 올리는 길(GitHub 저장소)은 그대로 두고, 손님에게 보여 주는 곳만 바꿨습니다. 그래서 글 발행 시스템은 한 줄도 고치지 않았습니다.</p>
+<h2>4. 어떻게 옮겼나요? (순서가 중요합니다)</h2>
+<h3>1단계 — 새 진열장을 먼저 완성하고 점검까지 끝내기</h3>
+<p>손님이 아직 옛 진열장을 보는 동안, 새 진열장(Cloudflare Pages)에 사이트를 똑같이 올렸습니다. 보안 규칙은 <code>_headers</code> 파일 하나에 적었습니다. 임시 주소에서 미리 점검한 결과는 다음과 같습니다.</p>
+<ul><li>Mozilla Observatory 보안 등급 <strong>A+ (120점)</strong></li><li>홈페이지 점검 <strong>FAIL 0건</strong></li><li>첫 화면·판매 페이지·블로그·강의·글·관리 화면 6종에서 보안 규칙 때문에 막히는 곳 <strong>0건</strong></li></ul>
+<h3>2단계 — 창고에서 새 진열장으로 자동 배달 연결</h3>
+<p>새 글이 창고(GitHub)에 올라오면 새 진열장으로 자동으로 배달되도록 연결했습니다. 이 배달에는 Cloudflare 열쇠(토큰)가 필요합니다. 열쇠는 계정 주인이 직접 만들어 넣었습니다.</p>
+<p><img src="/images/posts/29_3.jpg" alt="계정 단위 권한으로 시작" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">계정 단위 권한으로 시작</p>
+<p><img src="/images/posts/29_4.jpg" alt="「Cloudflare Pages · 편집」 하나만 고름" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">「Cloudflare Pages · 편집」 하나만 고름</p>
+<p>열쇠에는 <strong>꼭 필요한 권한 하나만</strong> 줍니다. 목록에 「모든 자원 읽기」, 「열쇠 추가로 만들기」 같은 넓은 묶음이 보이지만 고르지 않습니다. 기한은 1년으로 두고, 만료 한 달 전 알림을 할 일 표에 넣었습니다.</p>
+<h3>3단계 — 도메인을 Cloudflare에 연결하기</h3>
+<p><img src="/images/posts/29_5.jpg" alt="「Connect a domain」 선택. Transfer·Buy는 돈이 나가는 메뉴" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">「Connect a domain」 선택. Transfer·Buy는 돈이 나가는 메뉴</p>
+<p><img src="/images/posts/29_6.jpg" alt="검색·AI 로봇 출입을 모두 허용" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">검색·AI 로봇 출입을 모두 허용</p>
+<p>이 화면에서 <strong>AI 검색 로봇 출입을 막지 않도록</strong> 확인했습니다. 요즘은 ChatGPT·Claude 같은 AI가 답을 만들 때 홈페이지를 읽어 가는데, 여기서 막으면 AI 검색에 우리 홈페이지가 나오지 않습니다.</p>
+<p><img src="/images/posts/29_7.jpg" alt="Cloudflare가 읽어 온 기존 주소 기록. 전부 GitHub 서버 주소" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">Cloudflare가 읽어 온 기존 주소 기록. 전부 GitHub 서버 주소</p>
+<p>Cloudflare가 가져온 기존 기록 5줄은 모두 GitHub 진열장 주소였습니다. 이 5줄을 지우고 새 진열장 주소 2줄을 넣었습니다.</p>
+<p><img src="/images/posts/29_8.jpg" alt="www 없는 주소" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">www 없는 주소</p>
+<p><img src="/images/posts/29_9.jpg" alt="www 주소" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">www 주소</p>
+<h3>4단계 — 마지막에 도메인 안내소(네임서버) 바꾸기</h3>
+<p><img src="/images/posts/29_10.jpg" alt="가비아 도메인관리" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">가비아 도메인관리</p>
+<p><img src="/images/posts/29_11.jpg" alt="Cloudflare가 알려 준 네임서버 2개 입력" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">Cloudflare가 알려 준 네임서버 2개 입력</p>
+<p><img src="/images/posts/29_12.jpg" alt="가비아 변경완료" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">가비아 변경완료</p>
+<p>안내소는 「이 주소로 오는 손님을 어디로 보낼지」 알려 주는 곳입니다. 주소록(2~3단계)을 다 채운 뒤에 안내소를 바꿔야 합니다. 거꾸로 하면 새 안내소로 간 손님이 빈 주소록을 받아 사이트가 아예 안 열립니다.</p>
+<h3>결과 — 실제 주소에서 다시 잰 숫자</h3>
+<p><img src="/images/posts/29_13.jpg" alt="sotongmk.com 보안 등급 A+" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">sotongmk.com 보안 등급 A+</p>
+<ul><li>응답 머리글: <code>Server: GitHub.com</code> → <code>Server: cloudflare</code>, 보안 머리글 6종이 붙음</li><li>Mozilla Observatory 보안 등급 <strong>A+ (115점, 12개 시험 중 11개 통과)</strong></li><li>검색·AI 로봇 8종(구글·빙·네이버·다음·ChatGPT·Claude·퍼플렉시티·애플) 이름으로 접속 → 모두 정상(200)</li><li>글 자동 발행은 그대로: 새 글이 저장소에 올라오면 약 30초 뒤 새 진열장에 반영</li></ul>
+<h2>5. 우리가 실제로 빠졌던 함정 3가지</h2>
+<p><strong>함정 1 — 비밀값 입력칸은 무엇이 들어갔는지 안 보입니다.</strong></p>
+<p>열쇠를 넣는 칸은 글자를 <code>*</code>로 가립니다. 처음에는 열쇠 대신 다른 글자(직전에 복사한 명령어)가 들어갔는데, 화면으로는 알 수 없었습니다. 「넣었다」에서 끝내지 않고 바로 시험 배포를 돌렸기 때문에 오류 번호를 보고 잡을 수 있었습니다. 그 뒤로는 클립보드에서 바로 꺼내 넣는 명령을 써서 붙여 넣기 실수가 생길 틈을 없앴습니다.</p>
+<p><strong>함정 2 — www 없는 주소는 「한 줄 수정」으로 안 됩니다.</strong></p>
+<p>www.주소는 국내 도메인 업체 화면에서 한 줄(CNAME)로 새 진열장에 연결할 수 있습니다. 하지만 www 없는 주소는 그런 연결을 허용하지 않는 경우가 많습니다. 그래서 안내소 자체를 Cloudflare로 옮겼습니다. 처음 예상보다 단계가 늘어난 이유입니다.</p>
+<p><strong>함정 3 — 안내소를 바꾼 직후 몇 분은 열리지 않을 수 있습니다.</strong></p>
+<p>인터넷의 안내소들은 예전 답을 한동안 기억합니다. 그래서 바꾼 직후에는 손님마다 옛 진열장과 새 진열장을 나눠서 봅니다. 새 진열장 쪽은 Cloudflare가 「이 도메인이 정말 나한테 왔다」를 확인하고 보안 인증서를 만들기 전까지 잠깐 열리지 않습니다. Cloudflare 화면의 「Check nameservers now」 버튼으로 이 확인을 앞당길 수 있습니다.</p>
+<h2>6. 사장님 홈페이지도 확인해 보세요</h2>
+<p><img src="/images/posts/29_14.jpg" alt="사장님 점검3가지" loading="lazy"></p>
+<p style="font-size:14px;opacity:.75;margin-top:-8px">사장님 점검3가지</p>
+<ol><li><strong>실제로 어디서 나가고 있나요?</strong> 만든 곳에 「제 홈페이지는 지금 어느 서버에서 보이나요?」라고 물어보세요. 계약서·안내서에 적힌 곳과 같아야 합니다.</li><li><strong>무료 진열장에 판매 기능이 붙어 있지 않나요?</strong> 결제·주문·광고 랜딩이 있다면, 그 호스팅 약관이 사업 운영을 허용하는지 확인하세요.</li><li><strong>보안 등급은 몇 점인가요?</strong> Mozilla Observatory(developer.mozilla.org/observatory)에 주소를 넣으면 무료로 등급이 나옵니다.</li></ol>
+<h2>7. 무료 진열장은 쓰면 안 되나요?</h2>
+<p>그렇지 않습니다. 판매 기능 없이 가게를 소개하는 홈페이지라면 무료 진열장은 많이 쓰이는 방식이고, 빠르고 안정적입니다.</p>
+<p><strong>옮기는 게 좋은 경우</strong></p>
+<ul><li>결제·주문·상품 판매·광고 랜딩이 붙은 페이지</li><li>보안 등급(A+)을 계약 조건이나 신뢰의 근거로 내세워야 하는 곳</li><li>같은 계정에 다른 사이트가 많이 묶여 있는 경우</li></ul>
+<p><strong>그대로 둬도 되는 경우</strong></p>
+<ul><li>가게 소개·오시는 길·소식 위주의 홈페이지</li><li>예약·결제는 네이버 예약 등 외부 서비스로 연결만 하는 경우</li></ul>
+<p>소통마케팅센터는 이번 일을 계기로 <strong>우리가 만든 사이트 전체를 같은 기준으로 다시 점검</strong>하고 있습니다. 새로 만드는 홈페이지는 처음부터 보안 머리글을 붙일 수 있는 곳에 올리고, 판매 페이지와 소개 페이지를 같은 바구니에 담지 않는 것을 원칙으로 합니다.</p>
+<h3>자주 묻는 질문</h3>
+<h3>Q. GitHub Pages가 뭔가요?</h3><p>GitHub(개발자들이 코드를 보관하는 서비스)가 무료로 제공하는 홈페이지 진열 기능입니다. 저장소에 파일을 올리면 바로 홈페이지로 보여 줍니다.</p>
+<h3>Q. 이사하는 동안 홈페이지가 멈추나요?</h3><p>대부분의 시간은 멈추지 않습니다. 새 진열장을 먼저 완성해 두고 안내소만 마지막에 바꾸기 때문입니다. 다만 안내소를 바꾼 직후 몇 분은 일부 방문자에게 보안 연결 오류가 보일 수 있습니다.</p>
+<h3>Q. 비용이 드나요?</h3><p>이번 이사에서 추가 비용은 없었습니다. Cloudflare 무료 요금제를 썼고, 도메인은 원래 등록한 곳(가비아)에 그대로 두었습니다.</p>
+</div>
+  </article>
+
+  <section class="sheet sheet--paper blogpost__cta">
+    <div class="wrap">
+      <h2>지금 가게 이름으로 검색해 보셨습니까?</h2>
+      <p class="lede muted">상호와 업종만 남겨주시면 현재 온라인에서 어떻게 보이는지 정리해서 알려드립니다. 비용은 없습니다.</p>
+      <a class="btn btn--brand" href="https://naver.me/FdC4kHcY" target="_blank" rel="noopener">무료 진단 신청하기 <span class="arw" aria-hidden="true">→</span></a>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap ftr__in">
+    <div>
+      <p><b>소통마케팅센터</b> — 소셜로 통하는 소상공인의 통로</p>
+      <address>
+        충북 제천시 하소로 20<br>
+        전화 <a href="tel:043-651-5662">043-651-5662</a>
+      </address>
+    </div>
+    <div>
+      <p><b>채널</b></p>
+      <address>
+        <a href="https://blog.naver.com/stsnsm5662" target="_blank" rel="noopener">네이버 블로그</a><br>
+        <a href="https://www.instagram.com/jecheon_mateomuk" target="_blank" rel="noopener">인스타그램</a>
+      </address>
+    </div>
+  </div>
+  <div class="wrap ftr__legal">
+    <p>상호 <b>소통마케팅센터</b> · 대표 최기호 · 사업자등록번호 790-23-02129 · 통신판매업 신고 제2025-충북제천-0080호</p>
+    <p>충청북도 제천시 하소로 20, 2층 (하소동) · 010-2468-5662 · <a href="mailto:choikiho20@gmail.com">choikiho20@gmail.com</a></p>
+  </div>
+</footer>
+
+<nav class="dock" aria-label="빠른 연락">
+  <a href="tel:043-651-5662">전화</a>
+  <a href="https://open.kakao.com/o/svU2DWnh" target="_blank" rel="noopener">카톡 상담</a>
+  <a class="is-primary" href="https://naver.me/FdC4kHcY" target="_blank" rel="noopener">무료 진단</a>
+</nav>
+
+<script src="/assets/js/site.js?v=20261108a" defer></script>
+
+<script>/* 관리 화면에 들어와 있는 기기에서만 「이 글 수정」 버튼 */
+(function(){try{if(!localStorage.getItem('sotong_gh_token'))return}catch(e){return}
+var m=location.pathname.match(/(\d+)\.html$/);if(!m)return;var a=document.createElement('a');
+a.href='/admin.html#'+m[1];a.textContent='이 글 수정';a.style.cssText='position:fixed;right:16px;bottom:84px;z-index:50;padding:10px 16px;border-radius:100px;background:#FF1B5A;color:#fff;font-weight:700;text-decoration:none;box-shadow:0 4px 14px rgba(0,0,0,.35)';
+document.body.appendChild(a)})();</script>
+</body>
+</html>
