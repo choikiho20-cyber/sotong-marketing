@@ -345,3 +345,18 @@
     var v = (document.querySelector('.band') || {}).dataset; try { localStorage.setItem('band-insurance-closed', (v && v.v) || '1'); } catch (e) {}
   });
 })();
+
+/* ── 업종별 사례 탭 (11/23) — 글자는 전부 HTML에 있고, 탭은 보이는 것만 고른다 ── */
+(function () {
+  var box = document.querySelector('[data-works]');
+  if (!box) return;
+  var tabs = document.querySelectorAll('.wtab');
+  var parts = document.querySelectorAll('[data-works] figure, .work__note');
+  var show = function (cat) {
+    Array.prototype.forEach.call(tabs, function (t) { t.setAttribute('aria-pressed', String(t.dataset.tab === cat)); });
+    Array.prototype.forEach.call(parts, function (el) { el.classList.toggle('is-on', el.dataset.cat === cat); });
+    window.dispatchEvent(new Event('scroll'));   /* 새로 보인 사례 창도 스크롤 위치에 맞춘다 */
+  };
+  Array.prototype.forEach.call(tabs, function (t) { t.addEventListener('click', function () { show(t.dataset.tab); }); });
+  show(tabs[0].dataset.tab);
+})();

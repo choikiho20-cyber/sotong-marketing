@@ -934,3 +934,21 @@ a.track__act:hover{border-color:var(--ink)}
   .scene__pin{height:80vh}
   .js .say__ln{--f:1}
 }
+
+/* ── 11/23 업종별 사례 탭 ── */
+.wtabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+.wtab{font:inherit;font-size:15px;font-weight:700;letter-spacing:-.02em;padding:10px 18px;border-radius:999px;
+  border:1px solid var(--paper-line);background:var(--paper);color:var(--ink);cursor:pointer;transition:background .2s,color .2s,border-color .2s}
+.wtab:hover{border-color:var(--ink)}
+.wtab[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.work__note{margin:16px 0 0;font-size:15px;font-weight:600;color:var(--muted-on-paper);word-break:keep-all}
+.js .work__note,.js [data-works] figure{display:none}
+.js .work__note.is-on{display:block}
+.js [data-works] figure.is-on{display:block}
+.space.work{margin-top:24px;grid-template-columns:repeat(3,1fr)}
+@media(max-width:960px){.space.work{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.space.work{grid-template-columns:1fr}}
+.work__tag{display:inline-block;margin-bottom:8px;font-size:12px;font-weight:700;padding:3px 9px;border-radius:999px}
+.work__tag.is-live{background:var(--brand-soft);color:var(--brand)}
+.work__tag.is-sample{background:var(--paper-2);color:var(--muted-on-paper);border:1px solid var(--paper-line)}
+.work__tag.is-own{background:var(--ink);color:#fff}
