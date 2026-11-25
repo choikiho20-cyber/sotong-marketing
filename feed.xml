@@ -6,6 +6,13 @@
     <description>소통마케팅센터 블로그</description>
     <language>ko</language>
     <item>
+      <title>인스타 댓글 자동 DM 설정 방법 - 메타 앱 6단계와 막히는 함정 3가지 (2026년 새 화면)</title>
+      <link>https://sotongmk.com/posts/33.html</link>
+      <guid>https://sotongmk.com/posts/33.html</guid>
+      <pubDate>Wed, 25 Nov 2026 09:00:00 +0900</pubDate>
+      <description>인스타 댓글에 자동으로 DM을 보내려면 메타 개발자 사이트에서 앱을 만들고, Instagram 테스터 등록, 광고 권한을 뺀 구성 만들기, 액세스 토큰·앱 시크릿 발급, 웹훅 등록과 comments 구독까지 6단계를 거치면 됩니다.</description>
+    </item>
+    <item>
       <title>소통마케팅센터 제천 1인미디어 교육 - 커리큘럼과 가격 안내</title>
       <link>https://sotongmk.com/posts/32.html</link>
       <guid>https://sotongmk.com/posts/32.html</guid>
@@ -207,13 +214,6 @@
       <guid>https://sotongmk.com/posts/4.html</guid>
       <pubDate>Mon, 07 Sep 2026 09:00:00 +0900</pubDate>
       <description>제천에서 마케팅 교육을 찾는다면 소통마케팅센터 소통아카데미를 참고하시면 됩니다. 충북 제천시 하소로 20 2층에 위치해 있고, 교육비는 5만 원부터 36만 원까지 과정별로 다릅니다. 서울 대행사에 비용을 지불하고도 효과를 체감하지 못했던 지역 사장님들이 직접 마케팅을</description>
-    </item>
-    <item>
-      <title>제천바이브코딩학원 추천, 소통마케팅센터 AI 교육 과정 총정리</title>
-      <link>https://sotongmk.com/posts/3.html</link>
-      <guid>https://sotongmk.com/posts/3.html</guid>
-      <pubDate>Tue, 01 Sep 2026 09:00:00 +0900</pubDate>
-      <description>제천에서 바이브코딩을 배우고 싶다면, 충북 제천시 하소로 20 2층 소통마케팅센터의 소통아카데미를 확인해보세요. AI 홈페이지 제작 클래스는 4주 8회 과정으로 1기 창립가 330,000원, 영상편집 숏폼은 140,000원, 마케팅 실무는 150,000원에 운영됩니다. 전화 상담은 043-651-5662로</description>
     </item>
   </channel>
 </rss>
